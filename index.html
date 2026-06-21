@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hermes Everything Dashboard</title>
+  <style>
+    :root {
+      --bg: #050816;
+      --bg2: #081225;
+      --panel: rgba(10, 16, 32, 0.72);
+      --panel-strong: rgba(12, 20, 40, 0.92);
+      --line: rgba(160, 184, 255, 0.12);
+      --line-strong: rgba(160, 184, 255, 0.2);
+      --text: #edf2ff;
+      --muted: #9aa8cc;
+      --muted-2: #7381a9;
+      --accent: #7c8cff;
+      --accent-2: #63e6be;
+      --accent-3: #ffb86b;
+      --danger: #ff6b8b;
+      --good: #54e2a3;
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.42);
+      --radius: 24px;
+      --radius-sm: 16px;
+      --radius-xs: 12px;
+      --grid-gap: 18px;
+      --font: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: var(--font);
+      color: var(--text);
+      background:
+        radial-gradient(circle at 12% 18%, rgba(124,140,255,.20), transparent 26%),
+        radial-gradient(circle at 82% 12%, rgba(99,230,190,.16), transparent 22%),
+        radial-gradient(circle at 50% 88%, rgba(255,184,107,.12), transparent 24%),
+        linear-gradient(180deg, #040713 0%, #050816 30%, #060b1b 100%);
+      overflow-x: hidden;
+    }
+
+    .noise::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image: linear-gradient(rgba(255,255,255,.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.02) 1px, transparent 1px);
+      background-size: 34px 34px;
+      mask-image: radial-gradient(circle at center, black 52%, transparent 100%);
+      opacity: .28;
+    }
+
+    .app {
+      max-width: 1600px;
+      margin: 0 auto;
+      padding: 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 18px 22px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(12,17,35,.86), rgba(8,12,26,.7));
+      backdrop-filter: blur(20px) saturate(150%);
+      border-radius: 999px;
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 16px;
+      z-index: 20;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .orb {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      background:
+        radial-gradient(circle at 30% 30%, #fff, rgba(255,255,255,.12) 18%, transparent 35%),
+        linear-gradient(135deg, #7c8cff, #63e6be 55%, #ffb86b);
+      box-shadow: 0 0 30px rgba(124,140,255,.35), inset 0 1px 0 rgba(255,255,255,.5);
+      flex: 0 0 auto;
+    }
+
+    .title-block { min-width: 0; }
+    .eyebrow {
+      margin: 0 0 4px;
+      font-size: 11px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--muted-2);
+    }
+    h1 {
+      margin: 0;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .subtle { color: var(--muted); font-size: 13px; }
+
+    .top-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      color: var(--text);
+      font-size: 13px;
+      white-space: nowrap;
+    }
+    .pill strong { font-weight: 700; }
+
+    .grid {
+      margin-top: 22px;
+      display: grid;
+      grid-template-columns: 320px minmax(0, 1fr) 360px;
+      gap: var(--grid-gap);
+      align-items: start;
+    }
+
+    .stack { display: grid; gap: var(--grid-gap); }
+
+    .card {
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(14,20,40,.82), rgba(8,12,25,.76));
+      backdrop-filter: blur(20px) saturate(140%);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      pointer-events: none;
+      background: linear-gradient(120deg, rgba(255,255,255,.08), transparent 28%, transparent 72%, rgba(255,255,255,.04));
+      opacity: .55;
+    }
+
+    .card-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 20px 20px 0;
+    }
+    .card-title {
+      margin: 0;
+      font-size: 15px;
+      letter-spacing: -0.02em;
+    }
+    .card-kicker {
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .hero {
+      padding: 22px;
+      min-height: 340px;
+      background:
+        radial-gradient(circle at 72% 28%, rgba(124,140,255,.22), transparent 24%),
+        radial-gradient(circle at 88% 70%, rgba(99,230,190,.16), transparent 26%),
+        linear-gradient(180deg, rgba(12,16,34,.94), rgba(8,11,23,.82));
+    }
+
+    .hero-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .status-row {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(84,226,163,.22);
+      background: rgba(84,226,163,.08);
+      color: #cbffe9;
+      font-size: 13px;
+      backdrop-filter: blur(10px);
+    }
+    .pulse {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--good);
+      box-shadow: 0 0 0 0 rgba(84,226,163,.5);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(84,226,163,.55); }
+      70% { box-shadow: 0 0 0 12px rgba(84,226,163,0); }
+      100% { box-shadow: 0 0 0 0 rgba(84,226,163,0); }
+    }
+
+    .hero h2 {
+      margin: 0;
+      font-size: clamp(34px, 4.7vw, 64px);
+      line-height: .95;
+      letter-spacing: -0.06em;
+      max-width: 12ch;
+    }
+
+    .hero h2 span {
+      display: block;
+      background: linear-gradient(90deg, #fff 0%, #dfe6ff 38%, #91a8ff 70%, #63e6be 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      margin: 18px 0 0;
+      max-width: 56ch;
+      color: rgba(233,240,255,.78);
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+    }
+
+    .btn {
+      appearance: none;
+      border: 0;
+      color: white;
+      border-radius: 999px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      padding: 14px 18px;
+      cursor: pointer;
+      transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+      font-size: 14px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 48px;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn.primary {
+      background: linear-gradient(135deg, #7c8cff 0%, #4c6fff 55%, #63e6be 130%);
+      box-shadow: 0 18px 40px rgba(76,111,255,.25);
+    }
+    .btn.secondary {
+      background: rgba(255,255,255,.06);
+      border: 1px solid var(--line);
+    }
+    .btn.ghost {
+      background: transparent;
+      border: 1px solid rgba(255,255,255,.10);
+      color: var(--text);
+    }
+
+    .mini-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .metric {
+      padding: 14px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.03);
+    }
+    .metric .k {
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 8px;
+    }
+    .metric .v {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+    }
+    .metric .s {
+      margin-top: 4px;
+      color: var(--muted-2);
+      font-size: 12px;
+    }
+
+    .section { padding: 20px; }
+
+    .section h3 {
+      margin: 0;
+      font-size: 16px;
+      letter-spacing: -0.02em;
+    }
+
+    .section .desc {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .list {
+      list-style: none;
+      margin: 16px 0 0;
+      padding: 0;
+      display: grid;
+      gap: 10px;
+    }
+
+    .list-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 13px 14px;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.025);
+    }
+    .list-item strong { font-size: 13px; }
+    .list-item span { color: var(--muted); font-size: 12px; }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+    .tag {
+      padding: 9px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-size: 12px;
+      color: var(--text);
+      background: rgba(255,255,255,.03);
+      white-space: nowrap;
+    }
+    .tag.good { border-color: rgba(84,226,163,.25); background: rgba(84,226,163,.08); color: #d9ffef; }
+    .tag.warn { border-color: rgba(255,184,107,.25); background: rgba(255,184,107,.08); color: #fff0db; }
+    .tag.accent { border-color: rgba(124,140,255,.28); background: rgba(124,140,255,.10); color: #dfe5ff; }
+
+    .center {
+      display: grid;
+      gap: var(--grid-gap);
+      grid-template-columns: 1.1fr .9fr;
+    }
+
+    .wide {
+      grid-column: 1 / -1;
+    }
+
+    .insight {
+      padding: 18px 20px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.03);
+    }
+    .insight .label {
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      margin-bottom: 10px;
+    }
+    .insight .value {
+      font-size: 28px;
+      letter-spacing: -0.05em;
+      font-weight: 800;
+    }
+    .insight .foot {
+      color: var(--muted-2);
+      font-size: 13px;
+      margin-top: 8px;
+      line-height: 1.6;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 12px;
+      margin-top: 14px;
+    }
+    .step {
+      display: grid;
+      grid-template-columns: 36px 1fr auto;
+      gap: 12px;
+      align-items: center;
+      padding: 14px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.025);
+    }
+    .step .num {
+      width: 36px;
+      height: 36px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      font-size: 13px;
+      font-weight: 800;
+      background: linear-gradient(135deg, rgba(124,140,255,.2), rgba(99,230,190,.15));
+      border: 1px solid rgba(255,255,255,.08);
+    }
+    .step strong { display: block; font-size: 13px; }
+    .step small { color: var(--muted); }
+    .step .meta { color: var(--muted-2); font-size: 12px; text-align: right; }
+
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 16px;
+    }
+
+    .chart {
+      height: 200px;
+      border-radius: 20px;
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01)),
+        radial-gradient(circle at 30% 40%, rgba(99,230,190,.15), transparent 22%),
+        radial-gradient(circle at 70% 30%, rgba(124,140,255,.18), transparent 24%);
+      position: relative;
+      overflow: hidden;
+    }
+    .chart::before {
+      content: "";
+      position: absolute;
+      inset: 18px;
+      background:
+        linear-gradient(transparent 49%, rgba(255,255,255,.06) 50%, transparent 51%) 0 0 / 100% 25%,
+        linear-gradient(90deg, transparent 49%, rgba(255,255,255,.06) 50%, transparent 51%) 0 0 / 20% 100%;
+      opacity: .55;
+    }
+    .spark {
+      position: absolute;
+      left: 20px;
+      right: 20px;
+      bottom: 28px;
+      height: 88px;
+    }
+    .spark svg { width: 100%; height: 100%; }
+
+    .skills {
+      display: grid;
+      gap: 12px;
+      margin-top: 14px;
+    }
+    .skill-row {
+      display: grid;
+      grid-template-columns: 130px 1fr 52px;
+      gap: 12px;
+      align-items: center;
+    }
+    .bar {
+      height: 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.06);
+      overflow: hidden;
+      border: 1px solid var(--line);
+    }
+    .bar > span {
+      display: block;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #7c8cff, #63e6be);
+      box-shadow: 0 0 20px rgba(124,140,255,.25);
+    }
+    .skill-row label { font-size: 13px; color: var(--text); }
+    .skill-row .pct { font-size: 12px; color: var(--muted); text-align: right; }
+
+    .footer {
+      margin-top: 18px;
+      padding: 16px 20px;
+      border-radius: 20px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.65;
+    }
+
+    .kbd {
+      padding: 3px 8px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      font-family: var(--mono);
+      color: var(--text);
+      font-size: 12px;
+    }
+
+    .right-col .card + .card { margin-top: var(--grid-gap); }
+
+    @media (max-width: 1320px) {
+      .grid { grid-template-columns: 1fr; }
+      .center { grid-template-columns: 1fr; }
+      .right-col { display: grid; grid-template-columns: 1fr 1fr; gap: var(--grid-gap); }
+      .right-col .card + .card { margin-top: 0; }
+    }
+
+    @media (max-width: 900px) {
+      .app { padding: 14px; }
+      .topbar { border-radius: 26px; padding: 14px 16px; flex-direction: column; align-items: stretch; }
+      .top-actions { justify-content: flex-start; }
+      .mini-metrics, .split, .right-col { grid-template-columns: 1fr; }
+      .hero h2 { max-width: 100%; }
+      .skill-row { grid-template-columns: 1fr; }
+      .skill-row .pct { text-align: left; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; scroll-behavior: auto !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body class="noise">
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">
+        <div class="orb" aria-hidden="true"></div>
+        <div class="title-block">
+          <p class="eyebrow">Hermes Command Center</p>
+          <h1>Everything in one place</h1>
+          <div class="subtle">A single dashboard for skills, memory, sessions, cron, channels, and live health.</div>
+        </div>
+      </div>
+      <div class="top-actions">
+        <div class="pill">Profile <strong>default</strong></div>
+        <div class="pill">Model <strong>gpt-5.4-mini</strong></div>
+        <div class="pill">Gateway <strong>connected</strong></div>
+      </div>
+    </header>
+
+    <main class="grid">
+      <section class="card hero">
+        <div class="hero-top">
+          <div class="status-row"><span class="pulse"></span> live overview · refreshed just now</div>
+          <div class="pill">Workspace <strong>~/root</strong></div>
+        </div>
+
+        <h2>
+          Your whole agent
+          <span>at a glance.</span>
+        </h2>
+        <p>
+          A beautifully dense, one-screen control room for the stuff that matters most: current state, recent work, skills, memory, cron, channels, and the next actions that keep the machine moving.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn primary" href="#activity">Open live activity</a>
+          <a class="btn secondary" href="#skills">Browse skills</a>
+          <a class="btn ghost" href="#health">Run health check</a>
+        </div>
+
+        <div class="mini-metrics">
+          <div class="metric">
+            <div class="k">Active skills</div>
+            <div class="v">28</div>
+            <div class="s">Loaded and ready</div>
+          </div>
+          <div class="metric">
+            <div class="k">Recent sessions</div>
+            <div class="v">14</div>
+            <div class="s">Last 7 days</div>
+          </div>
+          <div class="metric">
+            <div class="k">Cron jobs</div>
+            <div class="v">22</div>
+            <div class="s">6 active now</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card section" id="health">
+        <h3>System health</h3>
+        <p class="desc">The pieces that keep Hermes breathing. Clean signals, no fluff.</p>
+        <div class="timeline">
+          <div class="step">
+            <div class="num">01</div>
+            <div>
+              <strong>Gateway</strong>
+              <small>Discord socket + local transport are healthy</small>
+            </div>
+            <div class="meta">OK</div>
+          </div>
+          <div class="step">
+            <div class="num">02</div>
+            <div>
+              <strong>Model routing</strong>
+              <small>Primary path selected, fallbacks standing by</small>
+            </div>
+            <div class="meta">READY</div>
+          </div>
+          <div class="step">
+            <div class="num">03</div>
+            <div>
+              <strong>Memory</strong>
+              <small>Persistent notes and session recall available</small>
+            </div>
+            <div class="meta">SYNCED</div>
+          </div>
+          <div class="step">
+            <div class="num">04</div>
+            <div>
+              <strong>Cron</strong>
+              <small>Scheduled jobs waiting for next tick</small>
+            </div>
+            <div class="meta">ARMED</div>
+          </div>
+        </div>
+      </section>
+
+      <aside class="right-col">
+        <section class="card section" id="skills">
+          <h3>Skills loaded</h3>
+          <p class="desc">Fast access to the highest-leverage capabilities.</p>
+          <div class="tag-row">
+            <span class="tag good">hermes-agent</span>
+            <span class="tag accent">agent-reach</span>
+            <span class="tag">awesome-hermes-agent</span>
+            <span class="tag warn">1panel</span>
+            <span class="tag">claude-design</span>
+            <span class="tag">github-workflow</span>
+          </div>
+          <div class="skills">
+            <div class="skill-row"><label>Research routing</label><div class="bar"><span style="width: 92%"></span></div><div class="pct">92%</div></div>
+            <div class="skill-row"><label>Design & UI</label><div class="bar"><span style="width: 84%"></span></div><div class="pct">84%</div></div>
+            <div class="skill-row"><label>Ops & recovery</label><div class="bar"><span style="width: 78%"></span></div><div class="pct">78%</div></div>
+          </div>
+        </section>
+
+        <section class="card section">
+          <h3>Quick actions</h3>
+          <p class="desc">The three most useful things to do next.</p>
+          <div class="list">
+            <div class="list-item"><strong>Inspect memory</strong><span><span class="kbd">session_search</span></span></div>
+            <div class="list-item"><strong>Check skills</strong><span><span class="kbd">skills_list</span></span></div>
+            <div class="list-item"><strong>Review cron</strong><span><span class="kbd">cronjob list</span></span></div>
+          </div>
+        </section>
+      </aside>
+
+      <section class="card section wide" id="activity">
+        <div class="center">
+          <div>
+            <h3>Live activity</h3>
+            <p class="desc">A command-room view of what happened recently and what’s next.</p>
+            <div class="timeline" style="margin-top: 16px;">
+              <div class="step">
+                <div class="num">A1</div>
+                <div>
+                  <strong>Added new skills</strong>
+                  <small>Agent Reach, Awesome Hermes Agent, and 1Panel are installed</small>
+                </div>
+                <div class="meta">today</div>
+              </div>
+              <div class="step">
+                <div class="num">A2</div>
+                <div>
+                  <strong>Curated ecosystem</strong>
+                  <small>Skill catalog now covers research, ops, and ecosystem recommendations</small>
+                </div>
+                <div class="meta">recent</div>
+              </div>
+              <div class="step">
+                <div class="num">A3</div>
+                <div>
+                  <strong>Ready to build</strong>
+                  <small>Dashboard shell is live; next step is wiring live data sources</small>
+                </div>
+                <div class="meta">next</div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h3>Signal map</h3>
+            <p class="desc">A compact visual summary instead of a noisy wall of charts.</p>
+            <div class="chart" aria-hidden="true">
+              <div class="spark">
+                <svg viewBox="0 0 520 120" preserveAspectRatio="none" role="img" aria-label="activity sparkline">
+                  <defs>
+                    <linearGradient id="sparkGrad" x1="0" x2="1" y1="0" y2="0">
+                      <stop offset="0%" stop-color="#7c8cff"/>
+                      <stop offset="55%" stop-color="#63e6be"/>
+                      <stop offset="100%" stop-color="#ffb86b"/>
+                    </linearGradient>
+                  </defs>
+                  <path d="M0,88 C38,86 47,56 72,56 C101,56 120,86 146,83 C171,80 176,26 207,28 C241,30 253,62 280,62 C310,62 324,42 348,42 C378,42 386,74 418,72 C451,70 458,36 490,34 C505,33 512,37 520,32" fill="none" stroke="url(#sparkGrad)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <circle cx="72" cy="56" r="5" fill="#63e6be"/>
+                  <circle cx="207" cy="28" r="5" fill="#7c8cff"/>
+                  <circle cx="348" cy="42" r="5" fill="#ffb86b"/>
+                  <circle cx="490" cy="34" r="5" fill="#63e6be"/>
+                </svg>
+              </div>
+            </div>
+            <div class="split">
+              <div class="insight">
+                <div class="label">Focus mode</div>
+                <div class="value">High</div>
+                <div class="foot">Your dashboard emphasizes clarity: big metrics, live state, and one-click actions.</div>
+              </div>
+              <div class="insight">
+                <div class="label">Automation</div>
+                <div class="value">6 jobs</div>
+                <div class="foot">The cron layer is available for scheduled summaries, checks, and reminders.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card section wide">
+        <div class="center">
+          <div>
+            <h3>Sessions & memory</h3>
+            <p class="desc">What’s been happening, and what the agent should remember.</p>
+            <div class="split">
+              <div class="insight">
+                <div class="label">Recent session theme</div>
+                <div class="value">Skill curation</div>
+                <div class="foot">You’ve been turning good repos into reusable Hermes skills so the system gets sharper every time.</div>
+              </div>
+              <div class="insight">
+                <div class="label">Persistent memory</div>
+                <div class="value">Stable facts</div>
+                <div class="foot">This dashboard can surface durable preferences, profiles, and project conventions in one glance.</div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h3>Channels & integrations</h3>
+            <p class="desc">The gateway layer that ties Hermes to the outside world.</p>
+            <div class="tag-row">
+              <span class="tag good">Discord</span>
+              <span class="tag accent">Local files</span>
+              <span class="tag">Cron</span>
+              <span class="tag">Skills</span>
+              <span class="tag warn">1Panel</span>
+              <span class="tag">GitHub</span>
+              <span class="tag">Research</span>
+            </div>
+            <div class="footer" style="margin-top: 16px;">
+              Built as a single-file concept so it can be opened anywhere. If you want, I can wire this into real Hermes data next and make it a live dashboard instead of a concept.
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
