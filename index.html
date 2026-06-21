@@ -910,18 +910,114 @@
       font-size: 12px;
       line-height: 1.45;
     }
+    .graph-card { overflow: hidden; }
+    .graph-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(280px, .8fr);
+      gap: 14px;
+      align-items: stretch;
+    }
+    .graph-stage {
+      border-radius: 22px;
+      border: 1px solid hsl(var(--line));
+      background:
+        radial-gradient(circle at 50% 50%, hsla(var(--accent), .12), transparent 34%),
+        radial-gradient(circle at 20% 20%, hsla(var(--accent-2), .12), transparent 20%),
+        linear-gradient(180deg, hsla(225, 24%, 14%, .96), hsla(225, 20%, 10%, .96));
+      overflow: hidden;
+      min-height: 420px;
+      position: relative;
+      box-shadow: var(--shadow-soft);
+    }
+    .graph-stage::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+      background-size: 48px 48px;
+      opacity: .28;
+      pointer-events: none;
+    }
+    .graph-stage svg {
+      width: 100%;
+      height: 100%;
+      min-height: 420px;
+      display: block;
+    }
+    .graph-edge {
+      stroke: url(#edgeGradient);
+      stroke-width: 2;
+      stroke-linecap: round;
+      fill: none;
+      opacity: .88;
+      stroke-dasharray: 9 10;
+      animation: edgeFlow 18s linear infinite;
+    }
+    .graph-edge.soft {
+      opacity: .34;
+      stroke-width: 1.3;
+      stroke-dasharray: 4 12;
+      animation-duration: 27s;
+    }
+    .graph-node circle {
+      fill: rgba(12, 15, 24, .98);
+      stroke: rgba(255,255,255,.14);
+      stroke-width: 1.3;
+      filter: drop-shadow(0 14px 30px rgba(0,0,0,.34));
+    }
+    .graph-node text {
+      fill: hsl(var(--text));
+      font-family: var(--sans);
+      font-weight: 750;
+      text-anchor: middle;
+      paint-order: stroke;
+      stroke: rgba(9, 12, 20, .85);
+      stroke-width: 4px;
+      letter-spacing: -0.03em;
+    }
+    .graph-node .meta {
+      fill: hsl(var(--muted));
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .02em;
+      stroke-width: 3px;
+    }
+    .graph-node.hot circle { stroke: hsla(var(--accent), .56); }
+    .graph-node.cold circle { stroke: hsla(var(--accent-2), .45); }
+    .graph-node.core circle {
+      fill: linear-gradient(135deg, hsla(var(--accent), .2), hsla(var(--accent-2), .15));
+      stroke: hsla(var(--accent), .48);
+    }
+    .graph-node {
+      transform-origin: center;
+      animation: nodeBreathe 7s ease-in-out infinite;
+      transition: transform .2s ease, filter .2s ease;
+    }
+    .graph-node.core { animation-duration: 5.4s; }
+    .graph-node:hover { transform: translateY(-2px) scale(1.03); }
+    .graph-node:hover circle { stroke-width: 1.8; }
     .palette-backdrop {
       position: fixed;
       inset: 0;
       z-index: 80;
-      display: none;
+      display: flex;
       align-items: center;
       justify-content: center;
       padding: 24px;
       background: rgba(4, 7, 18, .64);
       backdrop-filter: blur(18px) saturate(140%);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity .24s ease, visibility .24s ease;
     }
-    .palette-backdrop.open { display: flex; }
+    .palette-backdrop.open {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
     .palette {
       width: min(820px, 100%);
       border-radius: 28px;
@@ -931,6 +1027,13 @@
       padding: 18px;
       display: grid;
       gap: 14px;
+      transform: translateY(20px) scale(.985);
+      opacity: 0;
+      transition: transform .28s cubic-bezier(.2,.9,.1,1), opacity .22s ease;
+    }
+    .palette-backdrop.open .palette {
+      transform: translateY(0) scale(1);
+      opacity: 1;
     }
     .palette-head {
       display: flex;
@@ -981,12 +1084,13 @@
       color: hsl(var(--text));
       padding: 14px 15px;
       cursor: pointer;
-      transition: transform .14s ease, border-color .14s ease, background .14s ease;
+      transition: transform .14s ease, border-color .14s ease, background .14s ease, box-shadow .14s ease;
     }
     .palette-item:hover {
       transform: translateY(-1px);
       border-color: hsl(var(--line-2));
       background: hsla(225, 24%, 15%, .98);
+      box-shadow: 0 14px 28px rgba(0,0,0,.16);
     }
     .palette-item .left { display: grid; gap: 4px; }
     .palette-item .left strong { font-size: 13px; }
@@ -1000,6 +1104,56 @@
       border: 1px solid hsl(var(--line));
       background: hsla(225, 24%, 10%, .96);
       white-space: nowrap;
+    }
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px) scale(.985);
+      filter: blur(7px);
+      transition: opacity .65s cubic-bezier(.2,.8,.2,1), transform .65s cubic-bezier(.2,.8,.2,1), filter .65s ease;
+      will-change: transform, opacity, filter;
+    }
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      filter: blur(0);
+    }
+    .motion-ready .hero::after {
+      animation: shimmer 14s linear infinite;
+    }
+    .motion-ready .orb {
+      animation: orbFloat 7s ease-in-out infinite, orbGlow 8s ease-in-out infinite;
+    }
+    .motion-ready .status-chip .dot,
+    .motion-ready .status-pill .dot {
+      animation: pulse 1.6s ease-in-out infinite;
+    }
+    .motion-ready .card:hover,
+    .motion-ready .metric:hover,
+    .motion-ready .step:hover,
+    .motion-ready .mini-stat:hover,
+    .motion-ready .live-source:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 20px 54px rgba(0,0,0,.30);
+    }
+    @keyframes edgeFlow {
+      to { stroke-dashoffset: -260; }
+    }
+    @keyframes nodeBreathe {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-2px); }
+    }
+    @keyframes shimmer {
+      0% { transform: translateX(-8%); opacity: .48; }
+      50% { opacity: .72; }
+      100% { transform: translateX(8%); opacity: .48; }
+    }
+    @keyframes orbFloat {
+      0%,100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-4px) rotate(1deg); }
+    }
+    @keyframes orbGlow {
+      0%,100% { box-shadow: 0 12px 30px hsla(var(--accent), .26), inset 0 1px 0 rgba(255,255,255,.55); }
+      50% { box-shadow: 0 18px 44px hsla(var(--accent-2), .22), inset 0 1px 0 rgba(255,255,255,.7); }
     }
     @media (max-width: 1280px) {
       .shell { grid-template-columns: 1fr; }
@@ -1060,7 +1214,7 @@
           </div>
           <div class="status-grid">
             <div class="status-row"><span>Gateway</span><strong>connected</strong></div>
-            <div class="status-row"><span>Profile</span><strong>default</strong></div>
+            <div class="status-row"><span>Profile</span><strong id="runtimeProfile">default</strong></div>
             <div class="status-row"><span>Model</span><strong>gpt-5.4-mini</strong></div>
             <div class="status-row"><span>Deploy</span><strong>vercel ready</strong></div>
           </div>
@@ -1068,10 +1222,10 @@
 
         <div class="sidebar-footer">
           <div class="tiny-grid">
-            <div class="tiny"><strong>8</strong>dream dimensions</div>
-            <div class="tiny"><strong>4</strong>memory sources</div>
-            <div class="tiny"><strong>22</strong>cron jobs</div>
-            <div class="tiny"><strong>99%</strong>signal health</div>
+            <div class="tiny"><strong id="sidebarDreamDims">8</strong>dream dimensions</div>
+            <div class="tiny"><strong id="sidebarSkillsCount">4</strong>memory sources</div>
+            <div class="tiny"><strong id="sidebarCronCount">22</strong>cron jobs</div>
+            <div class="tiny"><strong id="sidebarSignalHealth">99%</strong>signal health</div>
           </div>
           <div>Built around the Jack-style operating-system thesis: everything visible, measurable, and improvable from one screen.</div>
         </div>
@@ -1356,19 +1510,87 @@
           <article class="card">
             <div class="card-head">
               <div>
-                <h4>Quick actions</h4>
-                <p>Command-centre shortcuts for the stuff you actually want to do daily.</p>
+                <h4>Hermes internals</h4>
+                <p>Live snapshot from skills, cron, sessions, and local profile state.</p>
               </div>
-              <span class="pill">⌘K <strong>open</strong></span>
+              <span class="pill">snapshot <strong id="runtimeStamp">live</strong></span>
             </div>
-            <div class="card-body">
-              <div class="timeline">
-                <div class="event"><div class="dot"></div><div><strong>Open command palette</strong><span>Jump between sections, filters, and external links with one search box.</span></div></div>
-                <div class="event"><div class="dot"></div><div><strong>Filter dream engine</strong><span>Focus on Money, Memory, Skills, Workflow, or Growth recommendations.</span></div></div>
-                <div class="event"><div class="dot"></div><div><strong>Go straight to live data</strong><span>See repo telemetry and environment state without hunting through the page.</span></div></div>
+            <div class="card-body live-grid">
+              <div class="inspect-grid">
+                <div class="mini-stat">
+                  <div class="k">Skills</div>
+                  <div class="v" id="runtimeSkillsCount">—</div>
+                  <div class="s">Current skill library size.</div>
+                </div>
+                <div class="mini-stat">
+                  <div class="k">Cron jobs</div>
+                  <div class="v" id="runtimeCronCount">—</div>
+                  <div class="s">Scheduled automations in the fleet.</div>
+                </div>
+                <div class="mini-stat">
+                  <div class="k">Sessions</div>
+                  <div class="v" id="runtimeSessionsCount">—</div>
+                  <div class="s">Recent session activity from the local index.</div>
+                </div>
+                <div class="mini-stat">
+                  <div class="k">Connected systems</div>
+                  <div class="v" id="runtimeSystemsCount">—</div>
+                  <div class="s">The OS surfaces currently wired in.</div>
+                </div>
+              </div>
+              <div class="connection-map">
+                <div class="connection-row">
+                  <div><strong>Skill sample</strong><span id="runtimeSkillsSample">Loading…</span></div>
+                  <span class="tag">local</span>
+                </div>
+                <div class="connection-row">
+                  <div><strong>Cron sample</strong><span id="runtimeCronSample">Loading…</span></div>
+                  <span class="tag">jobs</span>
+                </div>
+                <div class="connection-row">
+                  <div><strong>Session sample</strong><span id="runtimeSessionSample">Loading…</span></div>
+                  <span class="tag">recent</span>
+                </div>
+                <div class="connection-row">
+                  <div><strong>Profile</strong><span id="runtimeProfileLabel">default</span></div>
+                  <span class="tag">ready</span>
+                </div>
               </div>
             </div>
           </article>
+        </section>
+
+        <section class="card graph-card" id="graph">
+          <div class="card-head">
+            <div>
+              <h4>Visual dependency graph</h4>
+              <p>A proper operating-system map of how the stack connects: models, memory, skills, sessions, cron, delivery, and deployment.</p>
+            </div>
+            <span class="pill">graph <strong>live</strong></span>
+          </div>
+          <div class="card-body graph-layout">
+            <div class="graph-stage">
+              <svg id="dependencyGraph" viewBox="0 0 980 420" preserveAspectRatio="none" aria-label="Hermes dependency graph"></svg>
+            </div>
+            <div class="connection-map">
+              <div class="connection-row">
+                <div><strong>Core hub</strong><span>The Hermes OS node sits in the middle and fans out to the working surfaces.</span></div>
+                <span class="tag" id="graphHubCount">0</span>
+              </div>
+              <div class="connection-row">
+                <div><strong>Skills layer</strong><span id="graphSkillsText">Loads reusable procedures from the local library.</span></div>
+                <span class="tag" id="graphSkillsTag">—</span>
+              </div>
+              <div class="connection-row">
+                <div><strong>Automation layer</strong><span id="graphCronText">Scheduled jobs and watchdogs keep the system moving.</span></div>
+                <span class="tag" id="graphCronTag">—</span>
+              </div>
+              <div class="connection-row">
+                <div><strong>Session layer</strong><span id="graphSessionsText">Recent workstreams and handoffs show what the OS is actually doing.</span></div>
+                <span class="tag" id="graphSessionsTag">—</span>
+              </div>
+            </div>
+          </div>
         </section>
 
         <section class="card" id="dreaming">
@@ -1659,7 +1881,55 @@
     </div>
   </div>
 
+  <script id="runtime-data" type="application/json">
+{
+  "profile": "default",
+  "generatedAt": "2026-06-21T05:55:00Z",
+  "skillsCount": 130,
+  "skillsSample": [
+    ".archive/apple-notes",
+    ".archive/apple-reminders",
+    ".archive/autonomous-ai-agents",
+    ".archive/baoyu-generation",
+    ".archive/cold-call-tonality-design",
+    ".archive/devops",
+    ".archive/findmy",
+    ".archive/html-to-print-pdf",
+    ".archive/imessage",
+    ".archive/macos-computer-use"
+  ],
+  "cronJobsCount": 23,
+  "cronJobsSample": [
+    "Munyal Daily Market Research Report",
+    "Every morning at 9am Australian Eastern Standard T",
+    "Daily AI Agents & Open Source LLM News Briefing (9am AEST)",
+    "munyal-weekly-report",
+    "munyal-lead-pull-outscraper-fixed",
+    "munyal-lead-enrich-mobile-fixed",
+    "munyal-sms-outreach-customer-open-check",
+    "munyal-sms-script-craft-fixed"
+  ],
+  "sessionsCount": 3,
+  "sessionsSample": [
+    "continue  continue",
+    "cron-delivery-watchdog · Jun 21 05:52",
+    "Continue after deployment update #5"
+  ],
+  "repoLinks": {
+    "hermes": "https://github.com/ProLeadAppt/hermes-everything-dashboard",
+    "agentReach": "https://github.com/Panniantong/Agent-Reach"
+  },
+  "systemHealth": {
+    "online": true,
+    "status": "connected",
+    "signalHealth": 99,
+    "connectedSystems": 10
+  }
+}
+  </script>
+
   <script>
+    const runtime = JSON.parse(document.getElementById('runtime-data').textContent);
     const data = {
       main: [18, 21, 20, 24, 28, 27, 30, 34, 32, 37, 39, 42, 40, 45, 48, 46, 50, 54, 52, 58, 61, 59, 63, 67, 66, 69, 72, 70, 74, 77],
       usage: [8, 9, 10, 9, 11, 13, 14, 15, 15, 16, 18, 17, 19, 21],
@@ -1668,7 +1938,7 @@
           key: 'hermes',
           owner: 'ProLeadAppt',
           repo: 'hermes-everything-dashboard',
-          url: 'https://github.com/ProLeadAppt/hermes-everything-dashboard',
+          url: runtime.repoLinks.hermes,
           target: 'repoHermes',
           label: 'Hermes dashboard',
         },
@@ -1676,11 +1946,28 @@
           key: 'agentReach',
           owner: 'Panniantong',
           repo: 'Agent-Reach',
-          url: 'https://github.com/Panniantong/Agent-Reach',
+          url: runtime.repoLinks.agentReach,
           target: 'repoAgentReach',
           label: 'Agent-Reach',
         },
       ],
+      graph: [
+        { id: 'hermes', label: 'Hermes OS', meta: 'hub', x: 490, y: 210, r: 60, cls: 'core' },
+        { id: 'skills', label: 'Skills', meta: `${runtime.skillsCount}`, x: 235, y: 110, r: 38, cls: 'hot' },
+        { id: 'memory', label: 'Memory', meta: 'vault', x: 235, y: 310, r: 38, cls: 'cold' },
+        { id: 'cron', label: 'Cron', meta: `${runtime.cronJobsCount}`, x: 490, y: 66, r: 42, cls: 'hot' },
+        { id: 'sessions', label: 'Sessions', meta: `${runtime.sessionsCount}`, x: 745, y: 110, r: 38, cls: 'cold' },
+        { id: 'github', label: 'GitHub', meta: 'repo', x: 745, y: 310, r: 38, cls: 'cold' },
+        { id: 'vercel', label: 'Vercel', meta: 'deploy', x: 490, y: 354, r: 42, cls: 'hot' },
+        { id: 'models', label: 'Models', meta: 'plans', x: 108, y: 210, r: 36, cls: 'cold' },
+        { id: 'discord', label: 'Discord', meta: 'live', x: 872, y: 210, r: 36, cls: 'hot' },
+      ],
+      edges: [
+        ['hermes', 'skills'], ['hermes', 'memory'], ['hermes', 'cron'], ['hermes', 'sessions'],
+        ['hermes', 'github'], ['hermes', 'vercel'], ['hermes', 'models'], ['hermes', 'discord'],
+        ['skills', 'cron'], ['skills', 'memory'], ['github', 'vercel'], ['sessions', 'discord'],
+        ['models', 'skills'], ['vercel', 'discord'], ['cron', 'vercel']
+      ]
     };
 
     const chips = document.querySelectorAll('.chip');
@@ -1690,6 +1977,8 @@
     const paletteList = document.getElementById('paletteList');
     const openPaletteBtn = document.getElementById('openPaletteBtn');
     const closePaletteBtn = document.getElementById('closePaletteBtn');
+
+    const q = (id) => document.getElementById(id);
 
     function path(values, width, height, pad = 12) {
       const min = Math.min(...values);
@@ -1743,12 +2032,55 @@
       `;
     }
 
+    function drawGraph() {
+      const svg = document.getElementById('dependencyGraph');
+      const width = 980;
+      const height = 420;
+      const nodes = data.graph;
+      const pos = Object.fromEntries(nodes.map((n) => [n.id, n]));
+      const edgeMarkup = data.edges.map(([a, b], i) => {
+        const n1 = pos[a];
+        const n2 = pos[b];
+        const cls = i % 3 === 0 ? 'graph-edge soft' : 'graph-edge';
+        return `<line class="${cls}" x1="${n1.x}" y1="${n1.y}" x2="${n2.x}" y2="${n2.y}" />`;
+      }).join('');
+      const nodeMarkup = nodes.map((n) => `
+        <g class="graph-node ${n.cls}" transform="translate(${n.x}, ${n.y})">
+          <circle r="${n.r}"></circle>
+          <text y="-4" font-size="14">${n.label}</text>
+          <text class="meta" y="16" font-size="11">${n.meta}</text>
+        </g>
+      `).join('');
+      svg.innerHTML = `
+        <defs>
+          <linearGradient id="edgeGradient" x1="0" x2="1" y1="0" y2="1">
+            <stop offset="0%" stop-color="hsl(255 83% 65%)" stop-opacity=".9" />
+            <stop offset="100%" stop-color="hsl(182 75% 52%)" stop-opacity=".85" />
+          </linearGradient>
+          <radialGradient id="hubGlow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="hsl(255 83% 65%)" stop-opacity=".26" />
+            <stop offset="100%" stop-color="hsl(255 83% 65%)" stop-opacity="0" />
+          </radialGradient>
+        </defs>
+        <ellipse cx="490" cy="210" rx="180" ry="110" fill="url(#hubGlow)" />
+        ${edgeMarkup}
+        ${nodeMarkup}
+      `;
+      q('graphHubCount').textContent = `${nodes.length} nodes`;
+      q('graphSkillsTag').textContent = `${runtime.skillsCount}`;
+      q('graphCronTag').textContent = `${runtime.cronJobsCount}`;
+      q('graphSessionsTag').textContent = `${runtime.sessionsCount}`;
+      q('graphSkillsText').textContent = `Loads ${runtime.skillsCount} reusable skills from ~/.hermes/skills.`;
+      q('graphCronText').textContent = `Tracks ${runtime.cronJobsCount} scheduled jobs in the cron fleet.`;
+      q('graphSessionsText').textContent = `${runtime.sessionsCount} recent sessions in the local message store.`;
+    }
+
     function fmtTime(date) {
       return date.toLocaleTimeString([], { hour12: false });
     }
 
     function setText(id, text) {
-      const el = document.getElementById(id);
+      const el = q(id);
       if (el) el.textContent = text;
     }
 
@@ -1765,16 +2097,12 @@
       setText('envHardwareMeta', navigator.connection?.effectiveType ? `Connection: ${navigator.connection.effectiveType}` : 'Connection type unavailable.');
     }
 
-    function repoMeta(repo) {
-      return `https://api.github.com/repos/${repo.owner}/${repo.repo}`;
-    }
-
     async function loadRepo(repo) {
       const target = document.getElementById(repo.target);
       if (!target) return;
       target.dataset.loading = '1';
       try {
-        const res = await fetch(repoMeta(repo), { headers: { Accept: 'application/vnd.github+json' } });
+        const res = await fetch(`https://api.github.com/repos/${repo.owner}/${repo.repo}`, { headers: { Accept: 'application/vnd.github+json' } });
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const json = await res.json();
         target.innerHTML = `
@@ -1813,10 +2141,10 @@
     }
 
     function filterPalette(query) {
-      const q = query.trim().toLowerCase();
+      const qText = query.trim().toLowerCase();
       [...paletteList.querySelectorAll('.palette-item')].forEach((item) => {
         const text = item.dataset.text || item.textContent.toLowerCase();
-        item.hidden = q ? !text.includes(q) : false;
+        item.hidden = qText ? !text.includes(qText) : false;
       });
     }
 
@@ -1843,18 +2171,56 @@
       });
     }
 
+    function setRuntimePanels() {
+      setText('runtimeProfile', runtime.profile);
+      setText('runtimeProfileLabel', runtime.profile);
+      setText('runtimeStamp', new Date(runtime.generatedAt).toLocaleTimeString([], { hour12: false }));
+      setText('runtimeSkillsCount', String(runtime.skillsCount));
+      setText('runtimeCronCount', String(runtime.cronJobsCount));
+      setText('runtimeSessionsCount', String(runtime.sessionsCount));
+      setText('runtimeSystemsCount', String(runtime.systemHealth.connectedSystems));
+      setText('sidebarSkillsCount', String(runtime.skillsCount));
+      setText('sidebarCronCount', String(runtime.cronJobsCount));
+      setText('sidebarSignalHealth', `${runtime.systemHealth.signalHealth}%`);
+      setText('sidebarDreamDims', '8');
+      setText('runtimeSkillsSample', runtime.skillsSample.slice(0, 3).join(' · '));
+      setText('runtimeCronSample', runtime.cronJobsSample.slice(0, 3).join(' · '));
+      setText('runtimeSessionSample', runtime.sessionsSample.slice(0, 3).join(' · ') || 'No recent sessions recorded.');
+    }
+
+    function initReveal() {
+      document.body.classList.add('motion-ready');
+      const targets = document.querySelectorAll('.hero, .card, .metric, .step, .live-source, .mini-stat, .event, .dream, .status-card');
+      targets.forEach((el) => el.classList.add('reveal'));
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.14, rootMargin: '80px 0px -10px 0px' });
+      targets.forEach((el) => observer.observe(el));
+      requestAnimationFrame(() => {
+        document.querySelectorAll('.hero, .status-card').forEach((el) => el.classList.add('is-visible'));
+      });
+    }
+
     function tick() {
       const now = new Date();
       const utc = new Date(now.toISOString());
-      document.getElementById('localTime').textContent = fmtTime(now);
-      document.getElementById('utcTime').textContent = fmtTime(utc);
-      document.getElementById('updated').textContent = 'just now';
+      q('localTime').textContent = fmtTime(now);
+      q('utcTime').textContent = fmtTime(utc);
+      q('updated').textContent = 'just now';
     }
 
     drawChart('mainChart', data.main, 'hsl(255 83% 65%)', 290);
     drawSpark('sparkUsage', data.usage, 'hsl(182 75% 52%)');
+    drawGraph();
     tick();
+    setRuntimePanels();
     updateEnvPulse();
+    initReveal();
     setInterval(tick, 1000);
     window.addEventListener('resize', updateEnvPulse);
     window.addEventListener('online', updateEnvPulse);
@@ -1887,7 +2253,7 @@
         jumpTo('#dreaming');
         applyDreamFilter(filter);
       }
-      if (action === 'openRepo') window.open('https://github.com/ProLeadAppt/hermes-everything-dashboard', '_blank', 'noopener,noreferrer');
+      if (action === 'openRepo') window.open(runtime.repoLinks.hermes, '_blank', 'noopener,noreferrer');
       if (action === 'openLive') window.open('https://hermes-everything-dashboard.vercel.app', '_blank', 'noopener,noreferrer');
       closePalette();
     });
@@ -1904,7 +2270,7 @@
         '1': '#overview',
         '2': '#models',
         '3': '#telemetry',
-        '4': '#live-data',
+        '4': '#graph',
       };
       if (shortcuts[event.key]) {
         event.preventDefault();
@@ -1916,4 +2282,5 @@
     data.repos.forEach(loadRepo);
   </script>
 </body>
+
 </html>
