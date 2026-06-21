@@ -1,44 +1,1336 @@
 {
   "profile": "default",
-  "generatedAt": "2026-06-21T05:55:00Z",
+  "generatedAt": "2026-06-21T06:06:27.009646+00:00",
   "skillsCount": 130,
   "skillsSample": [
-    ".archive/apple-notes",
-    ".archive/apple-reminders",
-    ".archive/autonomous-ai-agents",
-    ".archive/baoyu-generation",
-    ".archive/cold-call-tonality-design",
-    ".archive/devops",
-    ".archive/findmy",
-    ".archive/html-to-print-pdf",
-    ".archive/imessage",
-    ".archive/macos-computer-use"
+    {
+      "path": ".archive/cold-call-tonality-design",
+      "name": "cold-call-tonality-design",
+      "category": "uncategorized",
+      "description": "Design openers and system prompts for AI cold-callers when tonality matters more than content. Use when the prospect is NOT problem-aware (most tradies don't know they're losing money to missed calls), when the call must sound like a peer/m"
+    },
+    {
+      "path": ".archive/html-to-print-pdf",
+      "name": "html-to-print-pdf",
+      "category": "uncategorized",
+      "description": "\"Generate beautiful, print-ready PDFs from HTML using headless Chrome. Use for: charts, certificates, posters, marketing collateral, lead reports, printable forms, any document that needs to look designed (not just text). NOT for: text-only"
+    },
+    {
+      "path": ".archive/imessage",
+      "name": "imessage",
+      "category": "uncategorized",
+      "description": "Send and receive iMessages/SMS via the imsg CLI on macOS."
+    },
+    {
+      "path": ".archive/devops",
+      "name": "devops",
+      "category": "uncategorized",
+      "description": "DevOps operations including instance migration, Kanban orchestration, webhook subscriptions, and worker management"
+    },
+    {
+      "path": ".archive/sales",
+      "name": "sales",
+      "category": "uncategorized",
+      "description": "Comprehensive sales methodology including cold-call scripts, sales operating systems, and techniques for Australian small-business outreach"
+    },
+    {
+      "path": ".archive/autonomous-ai-agents",
+      "name": "autonomous-ai-agents",
+      "category": "uncategorized",
+      "description": "Delegate coding tasks to autonomous AI coding agents (Claude Code, OpenAI Codex, OpenCode, etc.)"
+    },
+    {
+      "path": ".archive/apple-reminders",
+      "name": "apple-reminders",
+      "category": "uncategorized",
+      "description": "\"Apple Reminders via remindctl: add, list, complete.\""
+    },
+    {
+      "path": ".archive/baoyu-generation",
+      "name": "baoyu-generation",
+      "category": "uncategorized",
+      "description": "Generate visual content from text including article illustrations, knowledge comics, and infographics"
+    },
+    {
+      "path": ".archive/vapi-jack-cold-caller",
+      "name": "vapi-jack-cold-caller",
+      "category": "uncategorized",
+      "description": "Build, tune, and deploy a Vapi cold-caller assistant for Australian lead-gen campaigns. Use when user asks to create or update a Vapi assistant for tradie/service-business outbound calling. Covers pattern-interrupt openers, voice settings, "
+    },
+    {
+      "path": ".archive/scheduled-autonomous-reporting",
+      "name": "scheduled-autonomous-reporting",
+      "category": "uncategorized",
+      "description": "Create recurring cron jobs that fetch live external data (markets, news, APIs) and deliver formatted reports autonomously to Telegram or storage. Covers approval modes, toolset configuration, live data patterns, and output formatting for re"
+    },
+    {
+      "path": ".archive/findmy",
+      "name": "findmy",
+      "category": "uncategorized",
+      "description": "\"Track Apple devices/AirTags via FindMy.app on macOS.\""
+    },
+    {
+      "path": ".archive/apple-notes",
+      "name": "apple-notes",
+      "category": "uncategorized",
+      "description": "\"Manage Apple Notes via memo CLI: create, search, edit.\""
+    },
+    {
+      "path": ".archive/macos-computer-use",
+      "name": "macos-computer-use",
+      "category": "uncategorized",
+      "description": "|"
+    },
+    {
+      "path": ".archive/voice-agent-vapi",
+      "name": "voice-agent-vapi",
+      "category": "uncategorized",
+      "description": "|"
+    },
+    {
+      "path": "yuanbao",
+      "name": "yuanbao",
+      "category": "uncategorized",
+      "description": "\"Yuanbao (\u5143\u5b9d) groups: @mention users, query info/members.\""
+    },
+    {
+      "path": "cron/munyal-kpi-digest",
+      "name": "munyal-kpi-digest",
+      "category": "uncategorized",
+      "description": "Automates the daily KPI digest reporting for Tyson's tradie lead generation business."
+    },
+    {
+      "path": "low-pressure-instant-pot",
+      "name": "low-pressure-instant-pot",
+      "category": "uncategorized",
+      "description": "Tyson's Instant Pot only does LOW pressure (not High). Use this rule for ANY pressure cooker recipe \u2014 adjust cook times up by ~20% and clearly label it as Low Pressure. Applies to Meal Prep HQ recipes, custom meals, and any future pressure "
+    },
+    {
+      "path": "devops/webhook-subscriptions",
+      "name": "webhook-subscriptions",
+      "category": "uncategorized",
+      "description": "\"Webhook subscriptions: event-driven agent runs.\""
+    },
+    {
+      "path": "devops/command-router-design",
+      "name": "command-router-design",
+      "category": "uncategorized",
+      "description": "Design and build a single-intake message router that classifies free-form text into intents, extracts slots, and dispatches to typed action handlers with per-user scope enforcement. Use when the user wants a hub channel (e.g. #neo-command) "
+    },
+    {
+      "path": "devops/1panel",
+      "name": "1panel",
+      "category": "uncategorized",
+      "description": "\"Use when the user wants to work with 1Panel as a VPS control panel: install it, navigate its features, deploy websites, manage Docker containers, configure backups, or use its native AI agent support.\""
+    },
+    {
+      "path": "devops/neo-command-router",
+      "name": "neo-command-router",
+      "category": "uncategorized",
+      "description": "Route Tyson/Bec Discord operational messages through the live Neo Router backend, using existing Hermes Discord bot only."
+    },
+    {
+      "path": "devops/kanban-worker",
+      "name": "kanban-worker",
+      "category": "uncategorized",
+      "description": "Pitfalls, examples, and edge cases for Hermes Kanban workers. The lifecycle itself is auto-injected into every worker's system prompt as KANBAN_GUIDANCE (from agent/prompt_builder.py); this skill is what you load when you want deeper detail"
+    },
+    {
+      "path": "devops/lead-pipeline-local-services",
+      "name": "lead-pipeline-local-services",
+      "category": "uncategorized",
+      "description": "|"
+    },
+    {
+      "path": "devops/composio-mcp-and-discord-gateway",
+      "name": "composio-mcp-and-discord-gateway",
+      "category": "uncategorized",
+      "description": "Set up and verify Composio-backed MCP sessions and Discord gateway routing for Hermes Agent."
+    }
   ],
+  "skillsByCategory": {
+    "uncategorized": 128,
+    "research": 2
+  },
+  "skillsArchived": 14,
   "cronJobsCount": 23,
-  "cronJobsSample": [
-    "Munyal Daily Market Research Report",
-    "Every morning at 9am Australian Eastern Standard T",
-    "Daily AI Agents & Open Source LLM News Briefing (9am AEST)",
-    "munyal-weekly-report",
-    "munyal-lead-pull-outscraper-fixed",
-    "munyal-lead-enrich-mobile-fixed",
-    "munyal-sms-outreach-customer-open-check",
-    "munyal-sms-script-craft-fixed"
+  "cronJobsFull": [
+    {
+      "id": "6190f02321f4",
+      "name": "Munyal Daily Market Research Report",
+      "enabled": true,
+      "state": "scheduled",
+      "schedule_display": "0 0 * * *",
+      "model": "MiniMax-M3",
+      "provider": "minimax-oauth",
+      "deliver": "discord:1514805696569544835",
+      "last_run_at": "2026-06-20T00:01:16.960186+00:00",
+      "last_status": "ok",
+      "last_error": null,
+      "paused_at": null,
+      "paused_reason": null,
+      "next_run_at": "2026-06-22T00:00:00+00:00",
+      "completed_runs": 18,
+      "origin_chat": "0xChadAlphaLord"
+    },
+    {
+      "id": "58225e53f43d",
+      "name": "Every morning at 9am Australian Eastern Standard T",
+      "enabled": true,
+      "state": "scheduled",
+      "schedule_display": "20 22 * * *",
+      "model": "MiniMax-M3",
+      "provider": "minimax-oauth",
+      "deliver": "discord:1514805686851207179",
+      "last_run_at": "2026-06-19T22:21:21.715899+00:00",
+      "last_status": "ok",
+      "last_error": null,
+      "paused_at": null,
+      "paused_reason": null,
+      "next_run_at": "2026-06-21T22:20:00+00:00",
+      "completed_runs": 21,
+      "origin_chat": "0xChadAlphaLord"
+    },
+    {
+      "id": "b4da12ecb354",
+      "name": "Daily AI Agents & Open Source LLM News Briefing (9am AEST)",
+      "enabled": true,
+      "state": "scheduled",
+      "schedule_display": "0 23 * * *",
+      "model": "MiniMax-M3",
+      "provider": "minimax-oauth",
+      "deliver": "discord:1514805696569544835",
+      "last_run_at": "2026-06-19T23:05:34.016712+00:00",
+      "last_status": "ok",
+      "last_error": null,
+      "paused_at": null,
+      "paused_reason": null,
+      "next_run_at": "2026-06-21T23:00:00+00:00",
+      "completed_runs": 18,
+      "origin_chat": "0xChadAlphaLord"
+    },
+    {
+      "id": "d824fd6dfa89",
+      "name": "munyal-weekly-report",
+      "enabled": true,
+      "state": "scheduled",
+      "schedule_display": "30 4 * * 0",
+      "model": "MiniMax-M3",
+      "provider": "minimax-oauth",
+      "deliver": "discord:1514805686851207179",
+      "last_run_at": "2026-06-21T04:32:18.370771+00:00",
+      "last_status": "ok",
+      "last_error": null,
+      "paused_at": null,
+      "paused_reason": null,
+      "next_run_at": "2026-06-28T04:30:00+00:00",
+      "completed_runs": 8,
+      "origin_chat": "0xChadAlphaLord"
+    },
+    {
+      "id": "ef08efcb57a3",
+      "name": "munyal-lead-pull-outscraper-fixed",
+      "enabled": true,
+      "state": "scheduled",
+      "schedule_display": "0 */6 * * *",
+      "model": "MiniMax-M3",
+      "provider": "minimax-oauth",
+      "deliver": "discord:1514805699597701232",
+      "last_run_at": "2026-06-21T06:00:51.258789+00:00",
+      "last_status": "ok",
+      "last_error": null,
+      "paused_at": null,
+      "paused_reason": null,
+      "next_run_at": "2026-06-21T12:00:00+00:00",
+      "completed_runs": 52,
+      "origin_chat": "0xChadAlphaLord"
+    },
+    {
+      "id": "b6d5a2cb88fe",
+      "name": "munyal-lead-enrich-mobile-fixed",
+      "enabled": true,
+      "state": "scheduled",
+      "schedule_display": "50 23 * * *",
+      "model": "MiniMax-M3",
+      "provider": "minimax-oauth",
+      "deliver": "discord:1514805699597701232",
+      "last_run_at": "2026-06-19T23:50:49.665323+00:00",
+      "last_status": "ok",
+      "last_error": null,
+      "paused_at": null,
+      "paused_reason": null,
+      "next_run_at": "2026-06-21T23:50:00+00:00",
+      "completed_runs": 20,
+      "origin_chat": "0xChadAlphaLord"
+    },
+    {
+      "id": "3b9548788ce0",
+      "name": "munyal-sms-outreach-customer-open-check",
+      "enabled": false,
+      "state": "paused",
+      "schedule_display": "25 23 * * *",
+      "model": "openai/gpt-oss-20b:free",
+      "provider": "openrouter",
+      "deliver": "discord:1514805699597701232",
+      "last_run_at": "2026-06-13T23:47:50.537531+00:00",
+      "last_status": "ok",
+      "last_error": null,
+      "paused_at": "2026-06-14T22:56:00.300494+00:00",
+      "paused_reason": null,
+      "next_run_at": "2026-06-14T23:45:00+00:00",
+      "completed_runs": 9,
+      "origin_chat": "0xChadAlphaLord"
+    },
+    {
+      "id": "8fa7e781af8e",
+      "name": "munyal-sms-script-craft-fixed",
+      "enabled": true,
+      "state": "scheduled",
+      "schedule_display": "15 10 * * 0",
+      "model": "MiniMax-M3",
+      "provider": "minimax-oauth",
+      "deliver": "discord:1514805702810406912",
+      "last_run_at": "2026-06-14T10:22:40.286520+00:00",
+      "last_status": "ok",
+      "last_error": null,
+      "paused_at": null,
+      "paused_reason": null,
+      "next_run_at": "2026-06-21T10:15:00+00:00",
+      "completed_runs": 2,
+      "origin_chat": "0xChadAlphaLord"
+    },
+    {
+      "id": "568d25fb5e45",
+      "name": "munyal-market-research-icp-fixed",
+      "enabled": true,
+      "state": "scheduled",
+      "schedule_display": "0 8 * * 0",
+      "model": "MiniMax-M3",
+      "provider": "minimax-oauth",
+      "deliver": "discord:1514813969087336538",
+      "last_run_at": "2026-06-12T07:32:36.489321+00:00",
+      "last_status": "ok",
+      "last_error": null,
+      "paused_at": null,
+      "paused_reason": null,
+      "next_run_at": "2026-06-21T08:00:00+00:00",
+      "completed_runs": 1,
+      "origin_chat": "0xChadAlphaLord"
+    },
+    {
+      "id": "606b89d86e7b",
+      "name": "daily-financial-markets-summary-v2",
+      "enabled": true,
+      "state": "scheduled",
+      "schedule_display": "5 21 * * *",
+      "model": "MiniMax-M3",
+      "provider": "minimax-oauth",
+      "deliver": "discord:1514805708757925969",
+      "last_run_at": "2026-06-19T21:07:04.925557+00:00",
+      "last_status": "ok",
+      "last_error": null,
+      "paused_at": null,
+      "paused_reason": null,
+      "next_run_at": "2026-06-21T21:05:00+00:00",
+      "completed_runs": 17,
+      "origin_chat": "0xChadAlphaLord"
+    },
+    {
+      "id": "6377b6a9838b",
+      "name": "daily-world-news-digest-v2",
+      "enabled": true,
+      "state": "scheduled",
+      "schedule_display": "35 22 * * *",
+      "model": "MiniMax-M3",
+      "provider": "minimax-oauth",
+      "deliver": "discord:1514805708757925969",
+      "last_run_at": "2026-06-19T22:36:07.125449+00:00",
+      "last_status": "ok",
+      "last_error": null,
+      "paused_at": null,
+      "paused_reason": null,
+      "next_run_at": "2026-06-21T22:35:00+00:00",
+      "completed_runs": 16,
+      "origin_chat": "0xChadAlphaLord"
+    },
+    {
+      "id": "57dac6b1e7c4",
+      "name": "munyal-owner-enrich-fixed",
+      "enabled": true,
+      "state": "scheduled",
+      "schedule_display": "5 23 * * *",
+      "model": "MiniMax-M3",
+      "provider": "minimax-oauth",
+      "deliver": "discord:1514805699597701232",
+      "last_run_at": "2026-06-17T23:13:07.229054+00:00",
+      "last_status": "ok",
+      "last_error": null,
+      "paused_at": null,
+      "paused_reason": null,
+      "next_run_at": "2026-06-21T23:05:00+00:00",
+      "completed_runs": 12,
+      "origin_chat": "0xChadAlphaLord"
+    },
+    {
+      "id": "430423773820",
+      "name": "Morning Briefing \u2014 #daily-briefing",
+      "enabled": true,
+      "state": "scheduled",
+      "schedule_display": "30 20 * * *",
+      "model": "MiniMax-M3",
+      "provider": "minimax-oauth",
+      "deliver": "discord:1514805686851207179",
+      "last_run_at": "2026-06-19T20:31:10.993942+00:00",
+      "last_status": "ok",
+      "last_error": null,
+      "paused_at": null,
+      "paused_reason": null,
+      "next_run_at": "2026-06-21T20:30:00+00:00",
+      "completed_runs": 6,
+      "origin_chat": "Neo Discord / #general"
+    },
+    {
+      "id": "a94c5b25876d",
+      "name": "Nightly Shutdown \u2014 #daily-briefing",
+      "enabled": true,
+      "state": "scheduled",
+      "schedule_display": "30 10 * * *",
+      "model": "MiniMax-M3",
+      "provider": "minimax-oauth",
+      "deliver": "discord:1514805686851207179",
+      "last_run_at": "2026-06-19T10:30:56.942432+00:00",
+      "last_status": "ok",
+      "last_error": null,
+      "paused_at": null,
+      "paused_reason": null,
+      "next_run_at": "2026-06-21T10:30:00+00:00",
+      "completed_runs": 6,
+      "origin_chat": "Neo Discord / #general"
+    },
+    {
+      "id": "4a73818a601e",
+      "name": "Weekly CEO Review \u2014 #daily-briefing",
+      "enabled": true,
+      "state": "scheduled",
+      "schedule_display": "0 10 * * 0",
+      "model": "MiniMax-M3",
+      "provider": "minimax-oauth",
+      "deliver": "discord:1514805686851207179",
+      "last_run_at": "2026-06-14T10:13:58.341190+00:00",
+      "last_status": "ok",
+      "last_error": null,
+      "paused_at": null,
+      "paused_reason": null,
+      "next_run_at": "2026-06-21T10:00:00+00:00",
+      "completed_runs": 2,
+      "origin_chat": "Neo Discord / #general"
+    },
+    {
+      "id": "438cdbf0f219",
+      "name": "discord-cron-watchdog",
+      "enabled": true,
+      "state": "scheduled",
+      "schedule_display": "15 21 * * *",
+      "model": "MiniMax-M3",
+      "provider": "minimax-oauth",
+      "deliver": "discord:1514805696569544835",
+      "last_run_at": "2026-06-19T21:15:54.815041+00:00",
+      "last_status": "ok",
+      "last_error": null,
+      "paused_at": null,
+      "paused_reason": null,
+      "next_run_at": "2026-06-21T21:15:00+00:00",
+      "completed_runs": 11,
+      "origin_chat": "Neo Discord / #general"
+    },
+    {
+      "id": "a07e45d5845f",
+      "name": "weekly-automation-review",
+      "enabled": true,
+      "state": "scheduled",
+      "schedule_display": "0 9 * * 0",
+      "model": "MiniMax-M3",
+      "provider": "minimax-oauth",
+      "deliver": "discord:1514805686851207179",
+      "last_run_at": "2026-06-14T10:17:29.265237+00:00",
+      "last_status": "ok",
+      "last_error": null,
+      "paused_at": null,
+      "paused_reason": null,
+      "next_run_at": "2026-06-21T09:00:00+00:00",
+      "completed_runs": 2,
+      "origin_chat": "Neo Discord / #general"
+    },
+    {
+      "id": "d2cde1974e6d",
+      "name": "weekly-discord-housekeeping",
+      "enabled": true,
+      "state": "scheduled",
+      "schedule_display": "30 9 * * 0",
+      "model": "MiniMax-M3",
+      "provider": "minimax-oauth",
+      "deliver": "discord:1514805696569544835",
+      "last_run_at": "2026-06-14T10:19:41.166684+00:00",
+      "last_status": "ok",
+      "last_error": null,
+      "paused_at": null,
+      "paused_reason": null,
+      "next_run_at": "2026-06-21T09:30:00+00:00",
+      "completed_runs": 2,
+      "origin_chat": "Neo Discord / #general"
+    },
+    {
+      "id": "8cad4aeab179",
+      "name": "munyal-daily-kpi-digest",
+      "enabled": true,
+      "state": "scheduled",
+      "schedule_display": "0 11 * * *",
+      "model": "MiniMax-M3",
+      "provider": "minimax-oauth",
+      "deliver": "discord:1514805705809334372",
+      "last_run_at": "2026-06-19T11:04:14.921771+00:00",
+      "last_status": "ok",
+      "last_error": null,
+      "paused_at": null,
+      "paused_reason": null,
+      "next_run_at": "2026-06-21T11:00:00+00:00",
+      "completed_runs": 7,
+      "origin_chat": null
+    },
+    {
+      "id": "79f82bd3dd0b",
+      "name": "trade-journal-file-watch",
+      "enabled": true,
+      "state": "scheduled",
+      "schedule_display": "*/30 * * * *",
+      "model": "MiniMax-M3",
+      "provider": "minimax-oauth",
+      "deliver": "discord:1514805715015958610",
+      "last_run_at": "2026-06-21T06:00:33.221773+00:00",
+      "last_status": "ok",
+      "last_error": null,
+      "paused_at": null,
+      "paused_reason": null,
+      "next_run_at": "2026-06-21T06:30:00+00:00",
+      "completed_runs": 273,
+      "origin_chat": null
+    },
+    {
+      "id": "2ca2e3cd9b78",
+      "name": "cron-delivery-watchdog",
+      "enabled": true,
+      "state": "scheduled",
+      "schedule_display": "*/4 * * * *",
+      "model": "MiniMax-M3",
+      "provider": "minimax-oauth",
+      "deliver": "discord:1514805696569544835",
+      "last_run_at": "2026-06-21T06:04:39.782573+00:00",
+      "last_status": "ok",
+      "last_error": null,
+      "paused_at": null,
+      "paused_reason": null,
+      "next_run_at": "2026-06-21T06:08:00+00:00",
+      "completed_runs": 1878,
+      "origin_chat": null
+    },
+    {
+      "id": "b243b735c5e1",
+      "name": "munyal-sms-reply-watch",
+      "enabled": true,
+      "state": "scheduled",
+      "schedule_display": "*/5 * * * *",
+      "model": "openai/gpt-oss-20b:free",
+      "provider": "openrouter",
+      "deliver": "discord:1514805699597701232",
+      "last_run_at": "2026-06-21T06:05:22.486770+00:00",
+      "last_status": "ok",
+      "last_error": null,
+      "paused_at": null,
+      "paused_reason": null,
+      "next_run_at": "2026-06-21T06:10:00+00:00",
+      "completed_runs": 1494,
+      "origin_chat": null
+    },
+    {
+      "id": "9256ca431f82",
+      "name": "db-maintenance",
+      "enabled": true,
+      "state": "scheduled",
+      "schedule_display": "30 4 * * *",
+      "model": null,
+      "provider": null,
+      "deliver": "local",
+      "last_run_at": null,
+      "last_status": null,
+      "last_error": null,
+      "paused_at": null,
+      "paused_reason": null,
+      "next_run_at": "2026-06-22T04:30:00+00:00",
+      "completed_runs": 0,
+      "origin_chat": null
+    }
   ],
-  "sessionsCount": 3,
+  "cronActions": {
+    "total": 23,
+    "enabled": 22,
+    "disabled": 1,
+    "failing": 0,
+    "ok": 22,
+    "byProvider": {
+      "minimax-oauth": 20,
+      "openrouter": 2,
+      "unknown": 1
+    }
+  },
+  "lastCronOutputs": {
+    "leads": {
+      "size": 12288,
+      "mtime": "2026-06-21T06:00:36.795588+00:00"
+    },
+    "a07e45d5845f": {
+      "size": 4096,
+      "mtime": "2026-06-14T10:17:29.260039+00:00"
+    },
+    "438cdbf0f219": {
+      "size": 4096,
+      "mtime": "2026-06-19T21:15:54.190845+00:00"
+    },
+    "sms": {
+      "size": 4096,
+      "mtime": "2026-06-13T23:47:44.828338+00:00"
+    },
+    "3b9548788ce0": {
+      "size": 4096,
+      "mtime": "2026-06-13T23:47:49.972338+00:00"
+    },
+    "57dac6b1e7c4": {
+      "size": 4096,
+      "mtime": "2026-06-19T00:04:06.314376+00:00"
+    },
+    "430423773820": {
+      "size": 4096,
+      "mtime": "2026-06-19T20:31:10.254811+00:00"
+    },
+    "audit-index.md": {
+      "size": 29777,
+      "mtime": "2026-06-12T02:08:42.138241+00:00"
+    },
+    "neo-command-icon.png": {
+      "size": 81166,
+      "mtime": "2026-06-12T01:59:39.054234+00:00"
+    },
+    "d3857cc0a035": {
+      "size": 4096,
+      "mtime": "2026-06-16T04:49:29.589569+00:00"
+    },
+    "606b89d86e7b": {
+      "size": 4096,
+      "mtime": "2026-06-19T21:07:04.586838+00:00"
+    },
+    "neo-command-icon.svg": {
+      "size": 2935,
+      "mtime": "2026-06-12T01:59:08.182233+00:00"
+    },
+    "58225e53f43d": {
+      "size": 4096,
+      "mtime": "2026-06-19T22:21:21.158895+00:00"
+    },
+    "b6d5a2cb88fe": {
+      "size": 4096,
+      "mtime": "2026-06-19T23:50:48.877037+00:00"
+    },
+    "4a73818a601e": {
+      "size": 4096,
+      "mtime": "2026-06-14T10:13:57.584036+00:00"
+    },
+    "owner-enriched": {
+      "size": 4096,
+      "mtime": "2026-06-19T00:03:12.022375+00:00"
+    },
+    "b9d1af5e12c4": {
+      "size": 4096,
+      "mtime": "2026-06-14T22:31:44.168601+00:00"
+    },
+    "b4da12ecb354": {
+      "size": 4096,
+      "mtime": "2026-06-19T23:05:26.010929+00:00"
+    },
+    "568d25fb5e45": {
+      "size": 4096,
+      "mtime": "2026-06-12T07:32:35.586489+00:00"
+    },
+    "8fa7e781af8e": {
+      "size": 4096,
+      "mtime": "2026-06-14T10:22:34.584043+00:00"
+    },
+    "6377b6a9838b": {
+      "size": 4096,
+      "mtime": "2026-06-19T22:36:06.026906+00:00"
+    },
+    "enriched": {
+      "size": 4096,
+      "mtime": "2026-06-19T23:50:41.561037+00:00"
+    },
+    "d2cde1974e6d": {
+      "size": 4096,
+      "mtime": "2026-06-14T10:19:35.776040+00:00"
+    },
+    "6190f02321f4": {
+      "size": 4096,
+      "mtime": "2026-06-20T00:01:14.561045+00:00"
+    },
+    "8cad4aeab179": {
+      "size": 4096,
+      "mtime": "2026-06-19T11:04:13.814376+00:00"
+    },
+    "b243b735c5e1": {
+      "size": 69632,
+      "mtime": "2026-06-21T06:05:22.483592+00:00"
+    },
+    "2ca2e3cd9b78": {
+      "size": 90112,
+      "mtime": "2026-06-21T06:04:39.175591+00:00"
+    },
+    "d824fd6dfa89": {
+      "size": 4096,
+      "mtime": "2026-06-21T04:31:04.765195+00:00"
+    },
+    "ef08efcb57a3": {
+      "size": 4096,
+      "mtime": "2026-06-21T06:00:49.911588+00:00"
+    },
+    "research": {
+      "size": 4096,
+      "mtime": "2026-06-12T07:58:48.266509+00:00"
+    },
+    "79f82bd3dd0b": {
+      "size": 20480,
+      "mtime": "2026-06-21T06:00:33.215588+00:00"
+    },
+    "a94c5b25876d": {
+      "size": 4096,
+      "mtime": "2026-06-19T10:30:56.130351+00:00"
+    }
+  },
+  "sessionsCount": 20,
   "sessionsSample": [
-    "continue  continue",
-    "cron-delivery-watchdog · Jun 21 05:52",
-    "Continue after deployment update #5"
+    {
+      "session_key": "agent:main:discord:group:1514772140031868970:539669931973804033",
+      "session_id": "20260621_054746_8c3016",
+      "display_name": "Neo Discord / #general",
+      "platform": "discord",
+      "chat_type": "group",
+      "created_at": "2026-06-21T04:27:52.362087",
+      "updated_at": "2026-06-21T06:01:32.561337",
+      "last_prompt_tokens": 44734,
+      "estimated_cost_usd": 0.0,
+      "cost_status": "unknown",
+      "origin": {
+        "platform": "discord",
+        "chat_id": "1514772140031868970",
+        "chat_name": "Neo Discord / #general",
+        "chat_type": "group",
+        "user_id": "539669931973804033",
+        "user_name": "Munyal AI",
+        "thread_id": null,
+        "chat_topic": null,
+        "guild_id": "1514772139381620847",
+        "message_id": "1518110177017200732"
+      }
+    },
+    {
+      "session_key": "agent:main:discord:group:1514830297298899086:539669931973804033",
+      "session_id": "20260621_055652_2b5b31",
+      "display_name": "Neo Discord / #hair-pinns",
+      "platform": "discord",
+      "chat_type": "group",
+      "created_at": "2026-06-21T04:26:58.702515",
+      "updated_at": "2026-06-21T05:57:26.390490",
+      "last_prompt_tokens": 82792,
+      "estimated_cost_usd": 0.0,
+      "cost_status": "unknown",
+      "origin": {
+        "platform": "discord",
+        "chat_id": "1514830297298899086",
+        "chat_name": "Neo Discord / #hair-pinns",
+        "chat_type": "group",
+        "user_id": "539669931973804033",
+        "user_name": "Munyal AI",
+        "thread_id": null,
+        "chat_topic": "Hair Pinns \u2014 website edits, content, SEO, hosting",
+        "guild_id": "1514772139381620847",
+        "message_id": "1518109950298030110"
+      }
+    },
+    {
+      "session_key": "agent:main:discord:group:1514830296397250600:539669931973804033",
+      "session_id": "20260621_052428_464341",
+      "display_name": "Neo Discord / #aussie-loan-office",
+      "platform": "discord",
+      "chat_type": "group",
+      "created_at": "2026-06-21T04:26:58.023700",
+      "updated_at": "2026-06-21T05:49:42.691925",
+      "last_prompt_tokens": 132062,
+      "estimated_cost_usd": 0.0,
+      "cost_status": "unknown",
+      "origin": {
+        "platform": "discord",
+        "chat_id": "1514830296397250600",
+        "chat_name": "Neo Discord / #aussie-loan-office",
+        "chat_type": "group",
+        "user_id": "539669931973804033",
+        "user_name": "Munyal AI",
+        "thread_id": null,
+        "chat_topic": "Aussie Loan Office \u2014 website edits, content, SEO, hosting",
+        "guild_id": "1514772139381620847",
+        "message_id": "1518109941800632330"
+      }
+    },
+    {
+      "session_key": "agent:main:discord:group:1514805683860541592:539669931973804033",
+      "session_id": "20260621_054136_64bb82",
+      "display_name": "Neo Discord / #neo-command",
+      "platform": "discord",
+      "chat_type": "group",
+      "created_at": "2026-06-21T04:00:41.883841",
+      "updated_at": "2026-06-21T05:42:30.201640",
+      "last_prompt_tokens": 77931,
+      "estimated_cost_usd": 0.0,
+      "cost_status": "unknown",
+      "origin": {
+        "platform": "discord",
+        "chat_id": "1514805683860541592",
+        "chat_name": "Neo Discord / #neo-command",
+        "chat_type": "group",
+        "user_id": "539669931973804033",
+        "user_name": "Munyal AI",
+        "thread_id": null,
+        "chat_topic": "Main command channel. Chat with Neo, run commands, get things done.",
+        "guild_id": "1514772139381620847",
+        "message_id": "1518103336681996288"
+      }
+    },
+    {
+      "session_key": "agent:main:discord:group:1514830295268855858:539669931973804033",
+      "session_id": "20260621_042657_450b304d",
+      "display_name": "Neo Discord / #romans-building",
+      "platform": "discord",
+      "chat_type": "group",
+      "created_at": "2026-06-21T04:26:57.862252",
+      "updated_at": "2026-06-21T04:27:45.674914",
+      "last_prompt_tokens": 70089,
+      "estimated_cost_usd": 0.0,
+      "cost_status": "unknown",
+      "origin": {
+        "platform": "discord",
+        "chat_id": "1514830295268855858",
+        "chat_name": "Neo Discord / #romans-building",
+        "chat_type": "group",
+        "user_id": "539669931973804033",
+        "user_name": "Munyal AI",
+        "thread_id": null,
+        "chat_topic": "Romans Building Services \u2014 website edits, content, SEO, hosting",
+        "guild_id": "1514772139381620847",
+        "message_id": "1518109934905069609"
+      }
+    },
+    {
+      "session_key": "agent:main:discord:group:1514805715015958610:539669931973804033",
+      "session_id": "20260619_055055_12d61a5d",
+      "display_name": "Neo Discord / #trade-journal",
+      "platform": "discord",
+      "chat_type": "group",
+      "created_at": "2026-06-19T05:50:55.388183",
+      "updated_at": "2026-06-19T06:15:57.579535",
+      "last_prompt_tokens": 57604,
+      "estimated_cost_usd": 0.0,
+      "cost_status": "unknown",
+      "origin": {
+        "platform": "discord",
+        "chat_id": "1514805715015958610",
+        "chat_name": "Neo Discord / #trade-journal",
+        "chat_type": "group",
+        "user_id": "539669931973804033",
+        "user_name": "Munyal AI",
+        "thread_id": null,
+        "chat_topic": "Post-trade reviews. Plan vs execution, mistakes, lessons.",
+        "guild_id": "1514772139381620847",
+        "message_id": "1517406301896970280"
+      }
+    },
+    {
+      "session_key": "agent:main:discord:group:1514830299765280768:539669931973804033",
+      "session_id": "20260619_041147_76228d",
+      "display_name": "Neo Discord / #gentle-care-nursing",
+      "platform": "discord",
+      "chat_type": "group",
+      "created_at": "2026-06-19T04:04:07.615510",
+      "updated_at": "2026-06-19T04:15:42.248658",
+      "last_prompt_tokens": 58562,
+      "estimated_cost_usd": 0.0,
+      "cost_status": "unknown",
+      "origin": {
+        "platform": "discord",
+        "chat_id": "1514830299765280768",
+        "chat_name": "Neo Discord / #gentle-care-nursing",
+        "chat_type": "group",
+        "user_id": "539669931973804033",
+        "user_name": "Munyal AI",
+        "thread_id": null,
+        "chat_topic": "Gentle Care Nursing \u2014 website edits, content, SEO, hosting",
+        "guild_id": "1514772139381620847",
+        "message_id": "1517379425367494687"
+      }
+    },
+    {
+      "session_key": "agent:main:discord:group:1514830298745929799:539669931973804033",
+      "session_id": "20260618_092946_97dbff",
+      "display_name": "Neo Discord / #lava-operations",
+      "platform": "discord",
+      "chat_type": "group",
+      "created_at": "2026-06-18T09:21:53.453965",
+      "updated_at": "2026-06-18T23:52:27.431765",
+      "last_prompt_tokens": 73852,
+      "estimated_cost_usd": 0.0,
+      "cost_status": "unknown",
+      "origin": {
+        "platform": "discord",
+        "chat_id": "1514830298745929799",
+        "chat_name": "Neo Discord / #lava-operations",
+        "chat_type": "group",
+        "user_id": "539669931973804033",
+        "user_name": "Munyal AI",
+        "thread_id": null,
+        "chat_topic": "Lava Operations \u2014 website edits, content, SEO, hosting",
+        "guild_id": "1514772139381620847",
+        "message_id": "1517097006395293878"
+      }
+    }
   ],
-  "repoLinks": {
-    "hermes": "https://github.com/ProLeadAppt/hermes-everything-dashboard",
-    "agentReach": "https://github.com/Panniantong/Agent-Reach"
+  "sessionTimeline": [
+    {
+      "ts": "2026-06-21T06:01:32.561337",
+      "title": "Neo Discord / #general",
+      "platform": "discord",
+      "tokens": 44734,
+      "costUSD": 0.0,
+      "session_id": "20260621_054746_8c3016",
+      "status": "unknown"
+    },
+    {
+      "ts": "2026-06-21T05:57:26.390490",
+      "title": "Neo Discord / #hair-pinns",
+      "platform": "discord",
+      "tokens": 82792,
+      "costUSD": 0.0,
+      "session_id": "20260621_055652_2b5b31",
+      "status": "unknown"
+    },
+    {
+      "ts": "2026-06-21T05:49:42.691925",
+      "title": "Neo Discord / #aussie-loan-office",
+      "platform": "discord",
+      "tokens": 132062,
+      "costUSD": 0.0,
+      "session_id": "20260621_052428_464341",
+      "status": "unknown"
+    },
+    {
+      "ts": "2026-06-21T05:42:30.201640",
+      "title": "Neo Discord / #neo-command",
+      "platform": "discord",
+      "tokens": 77931,
+      "costUSD": 0.0,
+      "session_id": "20260621_054136_64bb82",
+      "status": "unknown"
+    },
+    {
+      "ts": "2026-06-21T04:27:45.674914",
+      "title": "Neo Discord / #romans-building",
+      "platform": "discord",
+      "tokens": 70089,
+      "costUSD": 0.0,
+      "session_id": "20260621_042657_450b304d",
+      "status": "unknown"
+    },
+    {
+      "ts": "2026-06-19T06:15:57.579535",
+      "title": "Neo Discord / #trade-journal",
+      "platform": "discord",
+      "tokens": 57604,
+      "costUSD": 0.0,
+      "session_id": "20260619_055055_12d61a5d",
+      "status": "unknown"
+    },
+    {
+      "ts": "2026-06-19T04:15:42.248658",
+      "title": "Neo Discord / #gentle-care-nursing",
+      "platform": "discord",
+      "tokens": 58562,
+      "costUSD": 0.0,
+      "session_id": "20260619_041147_76228d",
+      "status": "unknown"
+    },
+    {
+      "ts": "2026-06-18T23:52:27.431765",
+      "title": "Neo Discord / #lava-operations",
+      "platform": "discord",
+      "tokens": 73852,
+      "costUSD": 0.0,
+      "session_id": "20260618_092946_97dbff",
+      "status": "unknown"
+    },
+    {
+      "ts": "2026-06-18T06:03:21.759251",
+      "title": "Neo Discord / #bec-bridge",
+      "platform": "discord",
+      "tokens": 83252,
+      "costUSD": 0.0,
+      "session_id": "20260618_055258_f8721f",
+      "status": "unknown"
+    },
+    {
+      "ts": "2026-06-16T06:24:05.367784",
+      "title": "Neo Discord / #family-command",
+      "platform": "discord",
+      "tokens": 64253,
+      "costUSD": 0.0,
+      "session_id": "20260616_061935_0058a003",
+      "status": "unknown"
+    },
+    {
+      "ts": "2026-06-16T03:14:42.720749",
+      "title": "Neo Discord / #scripts-and-offers",
+      "platform": "discord",
+      "tokens": 53680,
+      "costUSD": 0.0,
+      "session_id": "20260616_030509_ecc0e6",
+      "status": "unknown"
+    },
+    {
+      "ts": "2026-06-15T13:30:55.222959",
+      "title": "Neo Discord / #munyal-ops",
+      "platform": "discord",
+      "tokens": 42216,
+      "costUSD": 0.0,
+      "session_id": "20260615_132948_879ca2dd",
+      "status": "unknown"
+    },
+    {
+      "ts": "2026-06-15T02:33:37.611732",
+      "title": "Neo Discord / #meal-prep-macros",
+      "platform": "discord",
+      "tokens": 44072,
+      "costUSD": 0.0,
+      "session_id": "20260614_073021_70e887",
+      "status": "unknown"
+    },
+    {
+      "ts": "2026-06-14T23:37:33.466563",
+      "title": "Neo Discord / #sales-pipeline",
+      "platform": "discord",
+      "tokens": 63653,
+      "costUSD": 0.0,
+      "session_id": "20260614_233645_50c29f",
+      "status": "unknown"
+    },
+    {
+      "ts": "2026-06-14T13:28:17.364232",
+      "title": "Neo Discord / #munyal-command-centre",
+      "platform": "discord",
+      "tokens": 40878,
+      "costUSD": 0.0,
+      "session_id": "20260614_111714_e28debaa",
+      "status": "unknown"
+    },
+    {
+      "ts": "2026-06-14T00:39:10.828902",
+      "title": "Neo Discord / #gym-training",
+      "platform": "discord",
+      "tokens": 66429,
+      "costUSD": 0.0,
+      "session_id": "20260614_001552_589b7f4b",
+      "status": "unknown"
+    },
+    {
+      "ts": "2026-06-13T23:26:14.151347",
+      "title": "Neo Discord / #trading-dashboard",
+      "platform": "discord",
+      "tokens": 70957,
+      "costUSD": 0.0,
+      "session_id": "20260613_232313_9db6553a",
+      "status": "unknown"
+    },
+    {
+      "ts": "2026-06-12T23:33:05.588569",
+      "title": "Neo Discord / #automation-logs",
+      "platform": "discord",
+      "tokens": 95771,
+      "costUSD": 0.0,
+      "session_id": "20260612_232153_dac766cc",
+      "status": "unknown"
+    },
+    {
+      "ts": "2026-06-12T04:19:17.996726",
+      "title": "munyal",
+      "platform": "discord",
+      "tokens": 34543,
+      "costUSD": 0.0,
+      "session_id": "20260612_041854_f836fda6",
+      "status": "unknown"
+    },
+    {
+      "ts": "2026-06-11T23:38:05.122216",
+      "title": "0xChadAlphaLord",
+      "platform": "telegram",
+      "tokens": 52406,
+      "costUSD": 0.0,
+      "session_id": "20260611_044724_81d9497a",
+      "status": "unknown"
+    }
+  ],
+  "costRoi": {
+    "monthlySpendUSD": 65.63,
+    "realSessionCostUSD": 0.0,
+    "combinedSpendUSD": 65.63,
+    "totalTokens": 1309736,
+    "okRuns": 22,
+    "minutesSaved": 132,
+    "timeValueUSD": 158.4,
+    "roiPercent": 141.4,
+    "modelSpend": {
+      "MiniMax-M3": 35.57,
+      "gpt-oss-20b:free": 30.06,
+      "unknown": 0.0
+    },
+    "perJob": [
+      {
+        "id": "6190f02321f4",
+        "name": "Munyal Daily Market Research Report",
+        "model": "MiniMax-M3",
+        "runs": 18,
+        "estCostUSD": 0.27
+      },
+      {
+        "id": "58225e53f43d",
+        "name": "Every morning at 9am Australian Eastern Standard T",
+        "model": "MiniMax-M3",
+        "runs": 21,
+        "estCostUSD": 0.32
+      },
+      {
+        "id": "b4da12ecb354",
+        "name": "Daily AI Agents & Open Source LLM News Briefing (9am AEST)",
+        "model": "MiniMax-M3",
+        "runs": 18,
+        "estCostUSD": 0.27
+      },
+      {
+        "id": "d824fd6dfa89",
+        "name": "munyal-weekly-report",
+        "model": "MiniMax-M3",
+        "runs": 8,
+        "estCostUSD": 0.12
+      },
+      {
+        "id": "ef08efcb57a3",
+        "name": "munyal-lead-pull-outscraper-fixed",
+        "model": "MiniMax-M3",
+        "runs": 52,
+        "estCostUSD": 0.78
+      },
+      {
+        "id": "b6d5a2cb88fe",
+        "name": "munyal-lead-enrich-mobile-fixed",
+        "model": "MiniMax-M3",
+        "runs": 20,
+        "estCostUSD": 0.3
+      },
+      {
+        "id": "3b9548788ce0",
+        "name": "munyal-sms-outreach-customer-open-check",
+        "model": "openai/gpt-oss-20b:free",
+        "runs": 9,
+        "estCostUSD": 0.18
+      },
+      {
+        "id": "8fa7e781af8e",
+        "name": "munyal-sms-script-craft-fixed",
+        "model": "MiniMax-M3",
+        "runs": 2,
+        "estCostUSD": 0.03
+      },
+      {
+        "id": "568d25fb5e45",
+        "name": "munyal-market-research-icp-fixed",
+        "model": "MiniMax-M3",
+        "runs": 1,
+        "estCostUSD": 0.01
+      },
+      {
+        "id": "606b89d86e7b",
+        "name": "daily-financial-markets-summary-v2",
+        "model": "MiniMax-M3",
+        "runs": 17,
+        "estCostUSD": 0.26
+      },
+      {
+        "id": "6377b6a9838b",
+        "name": "daily-world-news-digest-v2",
+        "model": "MiniMax-M3",
+        "runs": 16,
+        "estCostUSD": 0.24
+      },
+      {
+        "id": "57dac6b1e7c4",
+        "name": "munyal-owner-enrich-fixed",
+        "model": "MiniMax-M3",
+        "runs": 12,
+        "estCostUSD": 0.18
+      },
+      {
+        "id": "430423773820",
+        "name": "Morning Briefing \u2014 #daily-briefing",
+        "model": "MiniMax-M3",
+        "runs": 6,
+        "estCostUSD": 0.09
+      },
+      {
+        "id": "a94c5b25876d",
+        "name": "Nightly Shutdown \u2014 #daily-briefing",
+        "model": "MiniMax-M3",
+        "runs": 6,
+        "estCostUSD": 0.09
+      },
+      {
+        "id": "4a73818a601e",
+        "name": "Weekly CEO Review \u2014 #daily-briefing",
+        "model": "MiniMax-M3",
+        "runs": 2,
+        "estCostUSD": 0.03
+      },
+      {
+        "id": "438cdbf0f219",
+        "name": "discord-cron-watchdog",
+        "model": "MiniMax-M3",
+        "runs": 11,
+        "estCostUSD": 0.16
+      },
+      {
+        "id": "a07e45d5845f",
+        "name": "weekly-automation-review",
+        "model": "MiniMax-M3",
+        "runs": 2,
+        "estCostUSD": 0.03
+      },
+      {
+        "id": "d2cde1974e6d",
+        "name": "weekly-discord-housekeeping",
+        "model": "MiniMax-M3",
+        "runs": 2,
+        "estCostUSD": 0.03
+      },
+      {
+        "id": "8cad4aeab179",
+        "name": "munyal-daily-kpi-digest",
+        "model": "MiniMax-M3",
+        "runs": 7,
+        "estCostUSD": 0.1
+      },
+      {
+        "id": "79f82bd3dd0b",
+        "name": "trade-journal-file-watch",
+        "model": "MiniMax-M3",
+        "runs": 273,
+        "estCostUSD": 4.09
+      },
+      {
+        "id": "2ca2e3cd9b78",
+        "name": "cron-delivery-watchdog",
+        "model": "MiniMax-M3",
+        "runs": 1878,
+        "estCostUSD": 28.17
+      },
+      {
+        "id": "b243b735c5e1",
+        "name": "munyal-sms-reply-watch",
+        "model": "openai/gpt-oss-20b:free",
+        "runs": 1494,
+        "estCostUSD": 29.88
+      },
+      {
+        "id": "9256ca431f82",
+        "name": "db-maintenance",
+        "model": null,
+        "runs": 0,
+        "estCostUSD": 0.0
+      }
+    ]
+  },
+  "dreamRecommendations": [
+    {
+      "id": "dream-archive-cleanup",
+      "title": "Prune 14 archived skills",
+      "category": "skill-performance",
+      "impact": "low",
+      "effort": "low",
+      "summary": "You have 14 skills sitting in .archive/ that still register in count. Move them out of the search path or delete to keep the agent prompt lean.",
+      "metric": "14 skills",
+      "action": "Run `hermes curator` to review archive/ and confirm none are needed."
+    },
+    {
+      "id": "dream-paused-cleanup",
+      "title": "1 paused job(s) with no reason",
+      "category": "session-hygiene",
+      "impact": "medium",
+      "effort": "low",
+      "summary": "Paused jobs without a stated reason are usually stale. Either resume them or set a paused_reason so future-you knows why.",
+      "metric": "1 stale",
+      "action": "Use the Cron action panel to resume or annotate."
+    },
+    {
+      "id": "dream-cost-intelligence",
+      "title": "Tighten your cost-per-run baseline",
+      "category": "cost-intelligence",
+      "impact": "high",
+      "effort": "medium",
+      "summary": "You've completed 3875 cron runs. Move daily market research and briefing jobs to a cheaper model (e.g. minimax-oauth) when only summary is needed.",
+      "metric": "3875 runs",
+      "action": "Open Cost/ROI tab \u2192 model mix \u2192 swap."
+    },
+    {
+      "id": "dream-memory-health",
+      "title": "Memory health: archive stale memories > 60 days",
+      "category": "memory-health",
+      "impact": "medium",
+      "effort": "low",
+      "summary": "Run `hermes memory audit` to find memories that haven't been retrieved in 60+ days. Move them to .archive or delete to keep the active set tight.",
+      "metric": "60d window",
+      "action": "Run memory audit; review .archive/ candidates."
+    },
+    {
+      "id": "dream-business-context",
+      "title": "Re-ground the OS on your current 90-day focus",
+      "category": "business-outcomes",
+      "impact": "high",
+      "effort": "low",
+      "summary": "Re-tell the OS your current 90-day focus (tradie lead-gen + Lava Operations + Gentle Care) so dream recommendations stay relevant.",
+      "metric": "90d focus",
+      "action": "Open Onboarding wizard \u2192 Step 5 \u2192 update focus."
+    }
+  ],
+  "modelState": {
+    "models": [],
+    "gateway": null
   },
   "systemHealth": {
     "online": true,
     "status": "connected",
     "signalHealth": 99,
     "connectedSystems": 10
+  },
+  "repoLinks": {
+    "hermes": "https://github.com/ProLeadAppt/hermes-everything-dashboard",
+    "agentReach": "https://github.com/Panniantong/Agent-Reach"
   }
 }

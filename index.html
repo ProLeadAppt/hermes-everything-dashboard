@@ -1177,9 +1177,197 @@
       .topbar { border-radius: 22px; padding: 12px 14px; }
       .hero { border-radius: 24px; padding: 18px; }
       .card { border-radius: 22px; }
-      .metric { min-height: 112px; }
-      .hero h2 { max-width: 100%; }
     }
+
+    /* ---------- DREAM ENGINE LIVE ---------- */
+    .dream-live { display: grid; gap: 14px; }
+    .dream-row {
+      display: grid;
+      grid-template-columns: 38px 1fr auto;
+      gap: 14px;
+      padding: 16px 18px;
+      border-radius: 16px;
+      border: 1px solid hsl(var(--line));
+      background: linear-gradient(180deg, hsla(225, 30%, 9%, .85), hsla(225, 30%, 6%, .55));
+      align-items: center;
+      transition: transform .25s ease, border-color .25s ease, background .25s ease;
+    }
+    .dream-row:hover {
+      transform: translateY(-2px);
+      border-color: hsl(var(--accent) / .55);
+      background: linear-gradient(180deg, hsla(255, 50%, 14%, .85), hsla(225, 30%, 7%, .55));
+    }
+    .dream-row .ico {
+      width: 38px; height: 38px; border-radius: 12px;
+      display: grid; place-items: center;
+      background: radial-gradient(circle at 30% 20%, hsl(var(--accent) / .6), transparent 70%),
+                  hsla(225, 30%, 14%, .9);
+      border: 1px solid hsl(var(--accent) / .35);
+      font-size: 17px;
+    }
+    .dream-row .body strong { display: block; font-size: 14.5px; letter-spacing: -.01em; }
+    .dream-row .body p { margin: 4px 0 0; color: hsl(var(--muted)); font-size: 12.5px; }
+    .dream-row .meta-line {
+      display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px;
+    }
+    .dream-row .meta-line .pill-mini {
+      font-size: 10.5px; padding: 3px 8px; border-radius: 999px;
+      background: hsla(225, 30%, 14%, .8); border: 1px solid hsl(var(--line));
+      color: hsl(var(--muted));
+    }
+    .dream-row .actions { display: flex; gap: 8px; }
+    .dream-row .actions .btn { font-size: 12px; }
+    .dream-row .action-hint { margin-top: 8px; padding: 6px 10px; border-radius: 8px; background: hsl(225 30% 11% / .7); font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11.5px; color: hsl(195 75% 70%); border: 1px solid hsl(195 60% 35% / .35); line-height: 1.4; }
+    .impact-high   { --dot: 0 84% 60%; }
+    .impact-medium { --dot: 36 95% 56%; }
+    .impact-low    { --dot: 182 75% 52%; }
+    .dot-impact { width: 8px; height: 8px; border-radius: 50%; background: hsl(var(--dot)); box-shadow: 0 0 12px hsl(var(--dot) / .8); display: inline-block; }
+
+    /* ---------- COST / ROI TRACKER ---------- */
+    .roi-headline {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px;
+    }
+    .roi-tile {
+      padding: 16px;
+      border-radius: 18px;
+      border: 1px solid hsl(var(--line));
+      background: linear-gradient(180deg, hsla(225, 30%, 10%, .85), hsla(225, 30%, 6%, .5));
+      position: relative; overflow: hidden;
+    }
+    .roi-tile::after {
+      content: ""; position: absolute; inset: -1px;
+      background: radial-gradient(ellipse at 80% -20%, hsl(var(--accent) / .22), transparent 60%);
+      pointer-events: none;
+    }
+    .roi-tile .label { font-size: 11px; text-transform: uppercase; letter-spacing: .12em; color: hsl(var(--muted)); }
+    .roi-tile .value { font-size: 28px; font-weight: 700; margin-top: 6px; letter-spacing: -.02em; }
+    .roi-tile .sub { font-size: 12px; color: hsl(var(--muted)); margin-top: 4px; }
+    .roi-tile .value.up    { color: hsl(140 60% 65%); }
+    .roi-tile .value.down  { color: hsl(0 84% 65%); }
+    @media (max-width: 900px) { .roi-headline { grid-template-columns: repeat(2, 1fr); } }
+
+    .roi-breakdown {
+      margin-top: 18px;
+      display: grid; grid-template-columns: 1.1fr 1fr; gap: 18px;
+    }
+    @media (max-width: 900px) { .roi-breakdown { grid-template-columns: 1fr; } }
+    .roi-bar-row {
+      display: grid; grid-template-columns: 130px 1fr 60px; gap: 10px;
+      align-items: center; padding: 6px 0;
+    }
+    .roi-bar-row .name { font-size: 12.5px; color: hsl(var(--text)); }
+    .roi-bar-row .bar  { height: 8px; border-radius: 999px; background: hsla(225, 30%, 18%, .85); overflow: hidden; }
+    .roi-bar-row .bar i {
+      display: block; height: 100%;
+      background: linear-gradient(90deg, hsl(var(--accent)), hsl(var(--accent-2)));
+      border-radius: 999px;
+      box-shadow: 0 0 12px hsl(var(--accent) / .5);
+    }
+    .roi-bar-row .v { font-size: 12px; text-align: right; color: hsl(var(--muted)); font-variant-numeric: tabular-nums; }
+
+    .job-table { display: grid; gap: 6px; }
+    .job-row {
+      display: grid; grid-template-columns: 1fr 100px 60px 70px;
+      gap: 10px; align-items: center; padding: 8px 10px;
+      border-radius: 10px; background: hsla(225, 30%, 9%, .4);
+      font-size: 12.5px;
+    }
+    .job-row.head { background: transparent; color: hsl(var(--muted)); font-size: 10.5px; text-transform: uppercase; letter-spacing: .12em; padding: 4px 10px; }
+    .job-row .name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .job-row .model { color: hsl(var(--muted)); font-size: 11.5px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .job-row .v { font-variant-numeric: tabular-nums; text-align: right; }
+
+    /* ---------- SESSION TIMELINE ---------- */
+    .timeline-vis {
+      position: relative;
+      height: 240px;
+      border-radius: 16px;
+      background: radial-gradient(ellipse at 50% 100%, hsl(255 50% 18% / .35), transparent 60%), hsla(225, 30%, 6%, .7);
+      border: 1px solid hsl(var(--line));
+      overflow: hidden;
+    }
+    .timeline-vis svg { width: 100%; height: 100%; display: block; }
+    .timeline-axis { position: absolute; left: 0; right: 0; bottom: 6px; display: flex; justify-content: space-between; padding: 0 16px; font-size: 10.5px; color: hsl(var(--muted)); }
+    .timeline-legend { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 12px; }
+    .timeline-list { margin-top: 14px; display: grid; gap: 8px; max-height: 240px; overflow-y: auto; padding-right: 6px; }
+    .timeline-row {
+      display: grid; grid-template-columns: 84px 1fr auto; gap: 12px; align-items: center;
+      padding: 8px 12px; border-radius: 12px; background: hsla(225, 30%, 9%, .45);
+      border: 1px solid hsl(var(--line));
+    }
+    .timeline-row .when { font-size: 11px; color: hsl(var(--muted)); font-variant-numeric: tabular-nums; }
+    .timeline-row .what { font-size: 12.5px; }
+    .timeline-row .tokens { font-size: 11.5px; color: hsl(var(--muted)); font-variant-numeric: tabular-nums; }
+    .timeline-row .plat {
+      font-size: 9.5px; padding: 2px 7px; border-radius: 999px; text-transform: uppercase; letter-spacing: .12em;
+      background: hsla(255, 60%, 50%, .15); color: hsl(255 83% 75%); border: 1px solid hsl(255 60% 50% / .25);
+    }
+    .timeline-row .plat.discord { background: hsla(235, 70%, 55%, .15); color: hsl(220 90% 78%); border-color: hsl(235 70% 55% / .25); }
+    .timeline-row .plat.telegram { background: hsla(200, 80%, 50%, .15); color: hsl(195 90% 75%); border-color: hsl(200 80% 50% / .25); }
+    .timeline-row .plat.cli { background: hsla(140, 60%, 45%, .15); color: hsl(140 70% 75%); border-color: hsl(140 60% 45% / .25); }
+
+    /* ---------- CRON ACTION PANEL ---------- */
+    .cron-panel { display: grid; gap: 8px; max-height: 380px; overflow-y: auto; padding-right: 4px; }
+    .cron-row {
+      display: grid;
+      grid-template-columns: 16px 1fr 110px 90px auto;
+      gap: 12px; align-items: center;
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: hsla(225, 30%, 9%, .5);
+      border: 1px solid hsl(var(--line));
+      transition: border-color .2s ease, background .2s ease;
+    }
+    .cron-row:hover { border-color: hsl(var(--accent) / .5); }
+    .cron-row .state-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: hsl(140 60% 50%); box-shadow: 0 0 10px hsl(140 60% 50% / .7);
+    }
+    .cron-row.disabled .state-dot { background: hsl(0 0% 50%); box-shadow: none; }
+    .cron-row.error .state-dot { background: hsl(0 84% 60%); box-shadow: 0 0 10px hsl(0 84% 60% / .7); }
+    .cron-row.paused .state-dot { background: hsl(36 95% 56%); box-shadow: 0 0 10px hsl(36 95% 56% / .7); }
+    .cron-row .name { font-size: 13px; font-weight: 600; }
+    .cron-row .sched { font-size: 11px; color: hsl(var(--muted)); }
+    .cron-row .provider-tag { font-size: 10.5px; padding: 2px 8px; border-radius: 999px; background: hsla(225, 30%, 14%, .9); border: 1px solid hsl(var(--line)); color: hsl(var(--muted)); text-align: center; }
+    .cron-row .acts { display: flex; gap: 6px; }
+    .cron-row .acts .btn { font-size: 11.5px; padding: 4px 9px; }
+    .cron-summary {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;
+      margin-bottom: 12px;
+    }
+    .cron-summary .stat {
+      padding: 10px 12px; border-radius: 12px; background: hsla(225, 30%, 9%, .55);
+      border: 1px solid hsl(var(--line));
+    }
+    .cron-summary .stat .l { font-size: 10.5px; color: hsl(var(--muted)); text-transform: uppercase; letter-spacing: .12em; }
+    .cron-summary .stat .v { font-size: 18px; font-weight: 700; margin-top: 4px; font-variant-numeric: tabular-nums; }
+    .cron-summary .stat .v.ok    { color: hsl(140 60% 60%); }
+    .cron-summary .stat .v.err   { color: hsl(0 84% 60%); }
+    .cron-summary .stat .v.paused { color: hsl(36 95% 60%); }
+    .cron-row.flash { animation: flash 1.2s ease; }
+    @keyframes flash {
+      0%, 100% { background: hsla(225, 30%, 9%, .5); }
+      50% { background: hsla(255, 60%, 35%, .55); }
+    }
+    @media (max-width: 900px) {
+      .cron-row { grid-template-columns: 16px 1fr auto; }
+      .cron-row .sched, .cron-row .provider-tag { display: none; }
+      .cron-summary { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 6px 11px; border-radius: 10px; font-size: 12px; font-weight: 500;
+      background: hsla(225, 30%, 14%, .8); color: hsl(var(--text));
+      border: 1px solid hsl(var(--line)); cursor: pointer;
+      transition: all .2s ease; font-family: inherit;
+    }
+    .btn:hover { border-color: hsl(var(--accent) / .5); background: hsla(255, 50%, 20%, .7); }
+    .btn.primary { background: linear-gradient(135deg, hsl(var(--accent)), hsl(var(--accent-2))); color: hsl(225 30% 8%); border-color: transparent; font-weight: 600; }
+    .btn.primary:hover { filter: brightness(1.08); }
+    .btn.danger { color: hsl(0 84% 75%); border-color: hsl(0 60% 30% / .5); }
+    .btn.danger:hover { background: hsla(0, 60%, 25%, .3); }
+    .btn.tiny { padding: 3px 7px; font-size: 11px; }
   </style>
 </head>
 <body>
@@ -1813,6 +2001,111 @@
           </article>
         </section>
 
+        <section class="card" id="dreaming-live">
+          <div class="card-head">
+            <div>
+              <h4>Live dream engine</h4>
+              <p>High-leverage recommendations the OS has surfaced from your real usage right now. Mark them done and the engine learns.</p>
+            </div>
+            <span class="pill">today <strong id="dreamRecCount">0</strong></span>
+          </div>
+          <div class="card-body">
+            <div class="dream-live" id="dreamLive"></div>
+          </div>
+        </section>
+
+        <section class="card" id="cost-roi">
+          <div class="card-head">
+            <div>
+              <h4>Cost & ROI tracker</h4>
+              <p>Where the money is going, what it’s earning back, and which jobs are quietly costing the most.</p>
+            </div>
+            <span class="pill">window <strong>30d</strong></span>
+          </div>
+          <div class="card-body">
+            <div class="roi-headline">
+              <div class="roi-tile">
+                <div class="label">Monthly spend</div>
+                <div class="value" id="roiSpend">$0.00</div>
+                <div class="sub" id="roiSpendSub">across all jobs</div>
+              </div>
+              <div class="roi-tile">
+                <div class="label">Time saved</div>
+                <div class="value up" id="roiTime">0m</div>
+                <div class="sub" id="roiTimeSub">across <span id="roiRuns">0</span> ok runs</div>
+              </div>
+              <div class="roi-tile">
+                <div class="label">Time value</div>
+                <div class="value up" id="roiValue">$0.00</div>
+                <div class="sub">at $1.20/min blended</div>
+              </div>
+              <div class="roi-tile">
+                <div class="label">Net ROI</div>
+                <div class="value" id="roiPct">0%</div>
+                <div class="sub" id="roiPctSub">value − cost</div>
+              </div>
+            </div>
+            <div class="roi-breakdown">
+              <div>
+                <div class="section-label" style="padding-left:0; margin-bottom:10px;">Spend by model</div>
+                <div id="roiModelBars"></div>
+              </div>
+              <div>
+                <div class="section-label" style="padding-left:0; margin-bottom:10px;">Top cost-driving jobs</div>
+                <div class="job-table" id="roiJobTable"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="grid-2" id="live-runtime">
+          <article class="card">
+            <div class="card-head">
+              <div>
+                <h4>Session & memory timeline</h4>
+                <p>Real token pressure, real cost, real channels — straight from the live session ledger.</p>
+              </div>
+              <span class="pill">sessions <strong id="timelineCount">0</strong></span>
+            </div>
+            <div class="card-body">
+              <div class="timeline-vis">
+                <svg id="sessionChart" viewBox="0 0 760 200" preserveAspectRatio="none" aria-label="Session token timeline"></svg>
+                <div class="timeline-axis">
+                  <span>earlier</span>
+                  <span>tokens</span>
+                  <span>now</span>
+                </div>
+              </div>
+              <div class="timeline-legend">
+                <span class="legend-item"><i class="legend-dot" style="background:hsl(255 83% 65%);"></i>discord</span>
+                <span class="legend-item"><i class="legend-dot" style="background:hsl(195 90% 65%);"></i>telegram</span>
+                <span class="legend-item"><i class="legend-dot" style="background:hsl(140 60% 55%);"></i>cli / api</span>
+                <span class="legend-item" style="margin-left:auto;"><strong id="timelineTotalTokens">0</strong> tokens tracked</span>
+              </div>
+              <div class="timeline-list" id="timelineList"></div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-head">
+              <div>
+                <h4>Cron action panel</h4>
+                <p>Live view of every scheduled job. Run, pause, or open the prompt in a click.</p>
+              </div>
+              <span class="pill">jobs <strong id="cronCount">0</strong></span>
+            </div>
+            <div class="card-body">
+              <div class="cron-summary">
+                <div class="stat"><div class="l">OK</div><div class="v ok" id="cronOk">0</div></div>
+                <div class="stat"><div class="l">Errors</div><div class="v err" id="cronErr">0</div></div>
+                <div class="stat"><div class="l">Paused</div><div class="v paused" id="cronPaused">0</div></div>
+                <div class="stat"><div class="l">Total runs</div><div class="v" id="cronTotalRuns">0</div></div>
+              </div>
+              <div class="cron-panel" id="cronPanel"></div>
+            </div>
+          </article>
+        </section>
+
         <section class="card" id="footer">
           <div class="card-head">
             <div>
@@ -2214,6 +2507,316 @@
       q('updated').textContent = 'just now';
     }
 
+    /* ============== LIVE RUNTIME OVERLAY ==============
+       Fetches /runtime-data.json (when served by Hermes locally) and overlays
+       the cost/ROI tracker, session timeline, dream engine and cron panel.
+       Falls back gracefully if fetch fails. */
+    async function loadRuntimeOverlay() {
+      let fresh;
+      try {
+        const res = await fetch('runtime-data.json?_=' + Date.now(), { cache: 'no-store' });
+        if (res.ok) fresh = await res.json();
+      } catch (_) { /* offline / 404 = no overlay */ }
+      if (fresh) {
+        // Normalize key shapes between the local snapshot and the embedded runtime
+        const cronJobsLive = fresh.cronJobsLive || fresh.cronJobsFull || [];
+        const cronStats = fresh.cronStats || (fresh.cronActions ? {
+          total: fresh.cronActions.total || 0,
+          ok: fresh.cronActions.ok || 0,
+          enabled: fresh.cronActions.enabled || 0,
+          paused: fresh.cronActions.disabled || 0,
+          error: fresh.cronActions.failing || 0,
+          totalRuns: (cronJobsLive || []).reduce((s, j) => s + (j.completed_runs || j.runs || 0), 0),
+        } : null);
+        // Enrich each job with its last output mtime if present
+        if (cronStats && fresh.lastCronOutputs) {
+          for (const j of cronJobsLive) {
+            const out = fresh.lastCronOutputs[j.id];
+            if (out && out.mtime) j.last_run_at = j.last_run_at || out.mtime;
+          }
+        }
+        const sessionTimeline = fresh.sessionsDetail || fresh.sessionsRecent || fresh.sessionTimeline || [];
+        Object.assign(runtime, {
+          costRoi: fresh.costRoi,
+          sessionsRecent: sessionTimeline,
+          sessionsDetail: sessionTimeline,
+          sessionTimeline: sessionTimeline,
+          dreamRecommendations: fresh.dreamRecommendations || [],
+          cronJobsLive: cronJobsLive,
+          cronStats: cronStats,
+          ...(fresh.skillsCount ? { skillsCount: fresh.skillsCount } : {}),
+          ...(fresh.cronJobsCount ? { cronJobsCount: fresh.cronJobsCount } : {}),
+          ...(fresh.sessionsCount !== undefined ? { sessionsCount: fresh.sessionsCount } : {}),
+        });
+        if (fresh.generatedAt) runtime.generatedAt = fresh.generatedAt;
+      }
+      // Always render — if fresh is missing, the views just show "no data yet" states
+      renderDreamLive(runtime.dreamRecommendations || []);
+      renderCostRoi(runtime.costRoi);
+      renderSessionTimeline(runtime.sessionsRecent || [], runtime.sessionsDetail || []);
+      renderCronPanel(runtime.cronJobsLive || [], runtime.cronStats);
+    }
+
+    function renderDreamLive(recs) {
+      const root = q('dreamLive');
+      const counter = q('dreamRecCount');
+      if (counter) counter.textContent = recs.length;
+      if (!root) return;
+      if (!recs.length) {
+        root.innerHTML = '<div class="event"><div class="dot"></div><div><strong>No live recommendations yet</strong><span>Run <code>scripts/build_runtime_data.py</code> locally to refresh this view with the freshest dream-engine candidates.</span></div></div>';
+        return;
+      }
+      const ic = { 'cost-intelligence': '💰', 'memory-health': '🧠', 'skill-performance': '🛠', 'workflow-patterns': '⚙', 'session-hygiene': '✨', 'external-opportunities': '🌐' };
+      root.innerHTML = recs.map((r) => {
+        const meta = [r.category, r.impact && (r.impact + ' impact'), r.effort && (r.effort + ' effort')].filter(Boolean);
+        const tagHtml = meta.map((t) => `<span class="pill-mini">${t}</span>`).join('');
+        const metric = r.metric ? `<span class="pill-mini" style="color:hsl(140 60% 70%);border-color:hsl(140 50% 40% / .5)">${r.metric}</span>` : '';
+        return `
+          <div class="dream-row impact-${r.impact || 'low'}">
+            <div class="ico">${ic[r.category] || '◆'}</div>
+            <div class="body">
+              <strong>${r.title}</strong>
+              <p>${r.summary || ''}</p>
+              <div class="meta-line">${tagHtml}${metric}</div>
+              ${r.action ? `<div class="action-hint">${r.action}</div>` : ''}
+            </div>
+            <div class="actions">
+              <button class="btn tiny" data-dream-act="snooze" data-id="${r.id}">Snooze</button>
+              <button class="btn tiny primary" data-dream-act="done" data-id="${r.id}">Done</button>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function renderCostRoi(c) {
+      if (!c) {
+        ['roiSpend','roiTime','roiValue','roiPct'].forEach((id) => setText(id, '—'));
+        return;
+      }
+      const fmt = (n) => '$' + (Number(n) || 0).toFixed(2);
+      setText('roiSpend', fmt(c.combinedSpendUSD || c.monthlySpendUSD));
+      setText('roiSpendSub', `${(c.combinedSpendUSD || c.monthlySpendUSD) > 0 ? 'from ' + (c.okRuns || 0) + ' runs' : 'no spend tracked yet'}`);
+      setText('roiTime', `${c.minutesSaved || 0}m`);
+      setText('roiTimeSub', `across ${c.okRuns || 0} ok runs`);
+      setText('roiValue', fmt(c.timeValueUSD || 0));
+      const pct = Math.round(c.roiPercent || 0);
+      const pctEl = q('roiPct');
+      if (pctEl) {
+        pctEl.textContent = pct + '%';
+        pctEl.className = 'value ' + (pct >= 100 ? 'up' : (pct > 0 ? 'up' : 'down'));
+      }
+      setText('roiPctSub', `${fmt(c.timeValueUSD || 0)} − ${fmt(c.combinedSpendUSD || 0)}`);
+
+      // Spend by model bars
+      const bars = q('roiModelBars');
+      if (bars) {
+        const models = Object.entries(c.modelSpend || {}).filter(([, v]) => v > 0);
+        const max = Math.max(1, ...models.map(([, v]) => v));
+        if (!models.length) bars.innerHTML = '<div class="roi-bar-row"><span class="name">no model spend</span><span class="bar"></span><span class="v">$0</span></div>';
+        else bars.innerHTML = models.map(([m, v]) => `
+          <div class="roi-bar-row">
+            <span class="name">${m}</span>
+            <span class="bar"><i style="width:${Math.max(8, (v / max) * 100)}%"></i></span>
+            <span class="v">${fmt(v)}</span>
+          </div>
+        `).join('');
+      }
+
+      // Top jobs table
+      const tbl = q('roiJobTable');
+      if (tbl) {
+        const jobs = (c.perJob || []).slice(0, 6);
+        if (!jobs.length) tbl.innerHTML = '<div class="job-row"><span class="name">No job cost data yet</span><span class="v">—</span></div>';
+        else tbl.innerHTML = `
+          <div class="job-row head"><span class="name">Job</span><span class="model">Model</span><span class="v">Runs</span><span class="v">Est. cost</span></div>
+          ${jobs.map((j) => `
+            <div class="job-row">
+              <span class="name" title="${(j.name || '').replace(/"/g, '&quot;')}">${j.name || j.id}</span>
+              <span class="model" title="${j.model || ''}">${j.model || '—'}</span>
+              <span class="v">${j.runs || 0}</span>
+              <span class="v">${fmt(j.estCostUSD || 0)}</span>
+            </div>
+          `).join('')}
+        `;
+      }
+    }
+
+    function renderSessionTimeline(recent, detail) {
+      const root = q('timelineList');
+      const counter = q('timelineCount');
+      const totalEl = q('timelineTotalTokens');
+      if (counter) counter.textContent = detail.length || recent.length;
+      const sessions = (detail.length ? detail : recent).slice(0, 12);
+      const totalTokens = sessions.reduce((s, x) => s + (x.tokens || x.total_tokens || 0), 0);
+      if (totalEl) totalEl.textContent = totalTokens.toLocaleString();
+
+      // Chart
+      const svg = q('sessionChart');
+      if (svg && sessions.length) {
+        const W = 760, H = 200, pad = 18;
+        const order = [...sessions].reverse();
+        const maxTok = Math.max(1, ...order.map((s) => s.tokens || s.total_tokens || 1));
+        const stepX = (W - pad * 2) / Math.max(1, order.length - 1);
+        const points = order.map((s, i) => {
+          const x = pad + i * stepX;
+          const y = H - pad - ((s.tokens || s.total_tokens || 0) / maxTok) * (H - pad * 2);
+          const plat = (s.source || s.platform || 'cli').toLowerCase();
+          const color = plat.includes('discord') ? 'hsl(220 90% 75%)' : plat.includes('telegram') ? 'hsl(195 90% 65%)' : 'hsl(140 70% 70%)';
+          return `<g><circle cx="${x}" cy="${y}" r="4.5" fill="${color}" stroke="hsl(225 30% 8)" stroke-width="2" filter="url(#scGlow)"/><title>${(s.title || s.id || '').toString().slice(0, 60)} · ${(s.tokens || 0).toLocaleString()} tok</title></g>`;
+        }).join('');
+        const linePts = order.map((s, i) => {
+          const x = pad + i * stepX;
+          const y = H - pad - ((s.tokens || s.total_tokens || 0) / maxTok) * (H - pad * 2);
+          return `${i === 0 ? 'M' : 'L'} ${x} ${y}`;
+        }).join(' ');
+        const fillPts = linePts + ` L ${pad + (order.length - 1) * stepX} ${H - pad} L ${pad} ${H - pad} Z`;
+        svg.innerHTML = `
+          <defs>
+            <linearGradient id="scFill" x1="0" x2="0" y1="0" y2="1">
+              <stop offset="0%" stop-color="hsl(255 83% 65%)" stop-opacity=".35"/>
+              <stop offset="100%" stop-color="hsl(255 83% 65%)" stop-opacity="0"/>
+            </linearGradient>
+            <filter id="scGlow" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur stdDeviation="3" result="b"/>
+              <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+          <path d="${fillPts}" fill="url(#scFill)"/>
+          <path d="${linePts}" fill="none" stroke="hsl(255 83% 75%)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" filter="url(#scGlow)"/>
+          ${points}
+        `;
+      } else if (svg) {
+        svg.innerHTML = '<text x="380" y="100" text-anchor="middle" fill="hsl(var(--muted))" font-size="14">no sessions recorded yet</text>';
+      }
+
+      // List
+      if (root) {
+        if (!sessions.length) {
+          root.innerHTML = '<div class="timeline-row"><span class="when">—</span><span class="what">No live session data yet — start chatting with Hermes and it will appear here.</span><span class="tokens">0</span></div>';
+          return;
+        }
+        root.innerHTML = sessions.map((s) => {
+          const tokens = (s.tokens || s.total_tokens || 0).toLocaleString();
+          const src = (s.source || s.platform || 'cli').toLowerCase();
+          const plat = src.includes('discord') ? 'discord' : src.includes('telegram') ? 'telegram' : src.includes('cli') || src.includes('api') ? 'cli' : 'cli';
+          const when = s.ts || s.last_active || s.started_at || s.timestamp || '';
+          const time = when ? new Date(when).toLocaleString([], { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false }) : 'recent';
+          const title = (s.title || s.id || 'session').toString().slice(0, 80);
+          return `
+            <div class="timeline-row">
+              <span class="when">${time}</span>
+              <span class="what"><span class="plat ${plat}">${plat}</span> ${title}</span>
+              <span class="tokens">${tokens}</span>
+            </div>
+          `;
+        }).join('');
+      }
+    }
+
+    function renderCronPanel(jobs, stats) {
+      const root = q('cronPanel');
+      const counter = q('cronCount');
+      const s = stats || {};
+      if (counter) counter.textContent = jobs.length;
+      setText('cronOk', s.ok || 0);
+      setText('cronErr', s.error || 0);
+      setText('cronPaused', s.paused || 0);
+      setText('cronTotalRuns', s.totalRuns || 0);
+      if (!root) return;
+      if (!jobs.length) {
+        root.innerHTML = '<div class="cron-row"><div class="state-dot"></div><div><div class="name">No live cron data</div><div class="sched">Refresh the snapshot to load jobs.json</div></div><span class="provider-tag">—</span><div class="acts"></div></div>';
+        return;
+      }
+      const sorted = jobs.slice().sort((a, b) => {
+        const order = { error: 0, paused: 1, disabled: 2, ok: 3, scheduled: 4 };
+        return (order[a.state] ?? 9) - (order[b.state] ?? 9);
+      });
+      root.innerHTML = sorted.map((j) => {
+        const state = j.state || (j.enabled === false ? 'paused' : 'ok');
+        const dotCls = (state === 'paused' || state === 'disabled' || j.enabled === false) ? 'paused' : (state === 'error' || j.last_status === 'error') ? 'error' : '';
+        const sched = j.schedule_display || j.schedule || j.cron || '';
+        const lastWhen = j.last_run_at || j.lastRunAt || '';
+        const lastLine = lastWhen ? `last run · ${formatTimeAgo(lastWhen)}` : 'no runs yet';
+        const status = j.last_status || j.status || 'ok';
+        const runs = j.completed_runs || j.runs || 0;
+        return `
+          <div class="cron-row ${dotCls}" data-job-id="${j.id}">
+            <div class="state-dot"></div>
+            <div>
+              <div class="name">${(j.name || j.id || 'job').toString().slice(0, 70)}</div>
+              <div class="sched">${sched}${sched ? ' · ' : ''}${lastLine} · ${status}</div>
+            </div>
+            <span class="provider-tag">${(j.provider || 'hermes').toString().slice(0, 12)}</span>
+            <span class="provider-tag">${runs} runs</span>
+            <div class="acts">
+              <button class="btn tiny" data-cron-act="run" data-id="${j.id}">Run</button>
+              <button class="btn tiny danger" data-cron-act="toggle" data-id="${j.id}" data-enabled="${j.enabled !== false}">${j.enabled === false ? 'Resume' : 'Pause'}</button>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function formatTimeAgo(iso) {
+      try {
+        const d = new Date(iso);
+        const diff = (Date.now() - d.getTime()) / 1000;
+        if (diff < 60) return 'just now';
+        if (diff < 3600) return Math.floor(diff/60) + 'm ago';
+        if (diff < 86400) return Math.floor(diff/3600) + 'h ago';
+        return Math.floor(diff/86400) + 'd ago';
+      } catch (_) { return '—'; }
+    }
+
+    /* Cron action delegation — opens a hermes:// deep link that the local
+       Hermes CLI / desktop handler can pick up. If nothing is wired, the user
+       gets a friendly toast in the console. */
+    function actOnCron(action, id, enabled) {
+      const row = document.querySelector(`.cron-row[data-job-id="${id}"]`);
+      if (row) {
+        row.classList.add('flash');
+        setTimeout(() => row.classList.remove('flash'), 1200);
+      }
+      const cmd = action === 'run'
+        ? `hermes cron run ${id}`
+        : `hermes cron ${enabled ? 'pause' : 'resume'} ${id}`;
+      // Try opening via custom protocol; if blocked, copy the command to clipboard
+      const proto = `hermes://cron/${action}/${id}`;
+      let opened = false;
+      try { opened = window.open(proto, '_self'); } catch (_) {}
+      // Always copy the command so the user can paste it
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(cmd).catch(() => {});
+      }
+      const label = action === 'run' ? 'Triggered' : (enabled ? 'Pause requested' : 'Resume requested');
+      if (row) {
+        const note = document.createElement('div');
+        note.style.cssText = 'font-size:11px;color:hsl(var(--accent));padding:4px 0 0 24px;';
+        note.textContent = `${label} — copied "${cmd}" to clipboard. Paste in terminal to confirm.`;
+        row.appendChild(note);
+        setTimeout(() => note.remove(), 5000);
+      }
+    }
+    document.addEventListener('click', (event) => {
+      const btn = event.target.closest('[data-cron-act]');
+      if (!btn) return;
+      event.preventDefault();
+      actOnCron(btn.dataset.cronAct, btn.dataset.id, btn.dataset.enabled !== 'false');
+    });
+    document.addEventListener('click', (event) => {
+      const btn = event.target.closest('[data-dream-act]');
+      if (!btn) return;
+      event.preventDefault();
+      const row = btn.closest('.dream-row');
+      if (row) {
+        row.style.transition = 'opacity .35s ease, transform .35s ease';
+        row.style.opacity = '0.3';
+        row.style.transform = 'translateX(20px)';
+        setTimeout(() => row.remove(), 380);
+      }
+    });
+
     drawChart('mainChart', data.main, 'hsl(255 83% 65%)', 290);
     drawSpark('sparkUsage', data.usage, 'hsl(182 75% 52%)');
     drawGraph();
@@ -2221,6 +2824,8 @@
     setRuntimePanels();
     updateEnvPulse();
     initReveal();
+    loadRuntimeOverlay();
+    setInterval(loadRuntimeOverlay, 60000);
     setInterval(tick, 1000);
     window.addEventListener('resize', updateEnvPulse);
     window.addEventListener('online', updateEnvPulse);
