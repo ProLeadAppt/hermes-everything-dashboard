@@ -4,60 +4,54 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hermes Everything Dashboard</title>
-  <meta name="description" content="A premium Agentic OS console for Hermes: today view, skills, sessions, memory, automations, channels, and system health in one place." />
+  <meta name="description" content="A premium Agentic OS for Hermes: models, memory, skills, costs, ROI, onboarding, and self-improving recommendations in one place." />
   <style>
     :root {
-      --bg-page: 222 30% 98%;
-      --bg-surface: 0 0% 100%;
-      --bg-elevated: 220 20% 96%;
-      --bg-inset: 220 16% 92%;
-      --fg-primary: 220 16% 10%;
-      --fg-secondary: 220 8% 36%;
-      --fg-dim: 220 6% 50%;
-      --accent-base: 252 78% 58%;
-      --accent-soft: 252 100% 94%;
-      --status-ok: 152 60% 38%;
-      --status-ok-dim: 152 50% 92%;
-      --status-warn: 34 80% 48%;
-      --status-warn-dim: 36 80% 92%;
-      --status-err: 4 70% 50%;
-      --status-err-dim: 4 70% 94%;
-      --status-info: 210 70% 48%;
-      --status-info-dim: 210 70% 94%;
-      --border-default: 220 14% 88%;
-      --border-subtle: 220 12% 92%;
-      --border-strong: 220 14% 80%;
-      --radius-xl: 24px;
-      --radius-lg: 18px;
-      --radius-md: 14px;
-      --radius-sm: 10px;
-      --shadow: 0 18px 60px rgba(28, 35, 57, 0.09);
-      --shadow-soft: 0 8px 24px rgba(28, 35, 57, 0.06);
+      --bg: 225 30% 7%;
+      --bg-2: 225 26% 10%;
+      --bg-3: 225 22% 14%;
+      --card: 225 24% 12%;
+      --card-2: 225 22% 15%;
+      --line: 225 16% 22%;
+      --line-2: 225 14% 28%;
+      --text: 220 20% 96%;
+      --muted: 220 9% 72%;
+      --muted-2: 220 8% 56%;
+      --accent: 255 83% 65%;
+      --accent-2: 182 75% 52%;
+      --accent-3: 42 96% 60%;
+      --good: 152 58% 50%;
+      --warn: 38 92% 58%;
+      --bad: 0 85% 64%;
+      --shadow: 0 26px 80px rgba(0, 0, 0, 0.42);
+      --shadow-soft: 0 12px 28px rgba(0, 0, 0, 0.22);
+      --radius-xl: 28px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+      --radius-sm: 12px;
       --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
       --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      --background: hsl(var(--bg-page));
-      --foreground: hsl(var(--fg-primary));
-      --card: hsl(var(--bg-surface));
-      --card-foreground: hsl(var(--fg-primary));
-      --secondary: hsl(var(--bg-elevated));
-      --secondary-foreground: hsl(var(--fg-secondary));
-      --muted: hsl(var(--bg-inset));
-      --muted-foreground: hsl(var(--fg-dim));
-      --border: hsl(var(--border-default));
-      --ring: hsl(var(--accent-base));
+      color-scheme: dark;
+      --background: hsl(var(--bg));
+      --foreground: hsl(var(--text));
+      --card-bg: hsl(var(--card));
+      --card-fg: hsl(var(--text));
+      --border: hsl(var(--line));
+      --muted-fg: hsl(var(--muted));
+      --ring: hsl(var(--accent));
     }
 
     * { box-sizing: border-box; }
     html, body { min-height: 100%; }
     body {
       margin: 0;
-      color: var(--foreground);
       font-family: var(--sans);
+      color: hsl(var(--text));
       background:
-        radial-gradient(circle at 14% 8%, hsla(var(--accent-base), 0.12), transparent 26%),
-        radial-gradient(circle at 88% 12%, hsla(var(--status-ok), 0.10), transparent 22%),
-        radial-gradient(circle at 52% 92%, hsla(var(--status-warn), 0.08), transparent 24%),
-        linear-gradient(180deg, hsl(var(--bg-page)) 0%, hsl(var(--bg-page)) 100%);
+        radial-gradient(circle at 15% 12%, hsla(var(--accent), .18), transparent 24%),
+        radial-gradient(circle at 82% 10%, hsla(var(--accent-2), .12), transparent 18%),
+        radial-gradient(circle at 50% 95%, hsla(var(--accent-3), .08), transparent 22%),
+        linear-gradient(180deg, hsl(var(--bg)) 0%, hsl(var(--bg-2)) 40%, hsl(var(--bg)) 100%);
       overflow-x: hidden;
     }
 
@@ -67,25 +61,27 @@
       inset: 0;
       pointer-events: none;
       background-image:
-        linear-gradient(rgba(9, 15, 31, 0.028) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(9, 15, 31, 0.028) 1px, transparent 1px);
-      background-size: 36px 36px;
+        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+      background-size: 44px 44px;
       mask-image: radial-gradient(circle at center, black 58%, transparent 100%);
-      opacity: .8;
+      opacity: .55;
     }
 
     a { color: inherit; }
+    button { font: inherit; }
+
     .app {
-      width: min(1600px, calc(100vw - 28px));
-      margin: 0 auto;
-      padding: 14px 0 20px;
       position: relative;
       z-index: 1;
+      width: min(1600px, calc(100vw - 28px));
+      margin: 0 auto;
+      padding: 14px 0 22px;
     }
 
     .shell {
       display: grid;
-      grid-template-columns: 256px minmax(0, 1fr);
+      grid-template-columns: 276px minmax(0, 1fr);
       gap: 18px;
       align-items: start;
     }
@@ -93,33 +89,34 @@
     .sidebar {
       position: sticky;
       top: 14px;
+      min-height: calc(100vh - 28px);
+      padding: 18px 16px;
+      border: 1px solid hsl(var(--line));
+      border-radius: var(--radius-xl);
+      background: linear-gradient(180deg, hsla(225, 24%, 14%, .92), hsla(225, 22%, 11%, .96));
+      box-shadow: var(--shadow);
       display: flex;
       flex-direction: column;
       gap: 14px;
-      padding: 18px 16px;
-      border: 1px solid hsl(var(--border-default));
-      border-radius: var(--radius-xl);
-      background: linear-gradient(180deg, hsl(var(--bg-surface)), hsl(var(--bg-elevated)));
-      box-shadow: var(--shadow);
-      min-height: calc(100vh - 28px);
+      overflow: hidden;
     }
 
     .brand {
       display: flex;
       align-items: center;
       gap: 12px;
-      padding: 6px 4px 8px;
-      border-bottom: 1px solid hsl(var(--border-subtle));
+      padding-bottom: 14px;
+      border-bottom: 1px solid hsl(var(--line));
     }
 
     .orb {
-      width: 42px;
-      height: 42px;
-      border-radius: 14px;
+      width: 44px;
+      height: 44px;
+      border-radius: 16px;
       background:
-        radial-gradient(circle at 30% 30%, rgba(255,255,255,.92), rgba(255,255,255,.12) 16%, transparent 30%),
-        linear-gradient(135deg, hsl(var(--accent-base)), hsla(var(--status-ok), 0.95));
-      box-shadow: 0 10px 30px hsla(var(--accent-base), 0.20), inset 0 1px 0 rgba(255,255,255,.55);
+        radial-gradient(circle at 25% 28%, rgba(255,255,255,.9), rgba(255,255,255,.12) 18%, transparent 34%),
+        linear-gradient(135deg, hsl(var(--accent)), hsl(var(--accent-2)) 72%, hsl(var(--accent-3)));
+      box-shadow: 0 12px 30px hsla(var(--accent), .28), inset 0 1px 0 rgba(255,255,255,.55);
       flex: 0 0 auto;
     }
 
@@ -131,64 +128,57 @@
     }
     .brand p {
       margin: 3px 0 0;
-      color: hsl(var(--fg-dim));
+      color: hsl(var(--muted));
       font-size: 12px;
       line-height: 1.45;
     }
 
-    .sidebar-section {
-      display: grid;
-      gap: 10px;
-      padding: 4px 2px;
-    }
-
+    .sidebar-section { display: grid; gap: 10px; }
     .section-label {
       font-size: 11px;
-      letter-spacing: .16em;
-      text-transform: uppercase;
-      color: hsl(var(--fg-dim));
       font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: hsl(var(--muted-2));
       padding: 0 6px;
     }
 
-    .nav-links {
-      display: grid;
-      gap: 4px;
-    }
+    .nav-links { display: grid; gap: 4px; }
     .nav-link {
       display: flex;
       align-items: center;
       gap: 10px;
       padding: 11px 12px;
       border-radius: 14px;
-      color: hsl(var(--fg-secondary));
+      color: hsl(var(--muted));
       text-decoration: none;
-      transition: background .15s ease, color .15s ease, transform .15s ease;
+      border: 1px solid transparent;
+      transition: transform .15s ease, background .15s ease, border-color .15s ease, color .15s ease;
     }
     .nav-link:hover {
-      background: hsl(var(--bg-inset));
-      color: hsl(var(--fg-primary));
+      color: hsl(var(--text));
+      background: hsla(225, 20%, 22%, .42);
+      border-color: hsl(var(--line));
       transform: translateX(1px);
     }
     .nav-link.active {
-      background: linear-gradient(135deg, hsla(var(--accent-base), .12), hsla(var(--status-ok), .06));
-      color: hsl(var(--fg-primary));
-      box-shadow: inset 0 0 0 1px hsla(var(--accent-base), .10);
+      color: hsl(var(--text));
+      background: linear-gradient(135deg, hsla(var(--accent), .16), hsla(var(--accent-2), .08));
+      border-color: hsla(var(--accent), .20);
     }
     .nav-icon {
       width: 18px;
       text-align: center;
-      flex: 0 0 auto;
-      color: hsl(var(--accent-base));
-      font-weight: 800;
       font-size: 14px;
+      color: hsl(var(--accent));
+      font-weight: 800;
     }
 
     .status-card {
-      padding: 14px;
+      padding: 15px;
       border-radius: 18px;
-      border: 1px solid hsl(var(--border-default));
-      background: linear-gradient(180deg, hsl(var(--bg-surface)), hsl(var(--bg-elevated)));
+      border: 1px solid hsl(var(--line));
+      background: linear-gradient(180deg, hsla(225, 24%, 14%, .98), hsla(225, 21%, 10%, .98));
       box-shadow: var(--shadow-soft);
       display: grid;
       gap: 12px;
@@ -197,52 +187,48 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 10px;
+      gap: 8px;
     }
     .status-head strong { font-size: 13px; }
     .status-pill {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      padding: 8px 10px;
+      gap: 7px;
+      padding: 7px 10px;
       border-radius: 999px;
       font-size: 12px;
-      border: 1px solid hsla(var(--status-ok), .18);
-      background: hsla(var(--status-ok), .08);
-      color: hsl(var(--status-ok));
+      border: 1px solid hsla(var(--good), .18);
+      background: hsla(var(--good), .10);
+      color: hsl(var(--good));
       white-space: nowrap;
     }
     .dot {
       width: 8px;
       height: 8px;
       border-radius: 999px;
-      background: hsl(var(--status-ok));
-      box-shadow: 0 0 0 5px hsla(var(--status-ok), .12);
+      background: hsl(var(--good));
+      box-shadow: 0 0 0 5px hsla(var(--good), .10);
     }
-
-    .status-grid {
-      display: grid;
-      gap: 10px;
-    }
+    .status-grid { display: grid; gap: 10px; }
     .status-row {
       display: flex;
       justify-content: space-between;
       gap: 12px;
       padding-top: 10px;
-      border-top: 1px solid hsl(var(--border-subtle));
+      border-top: 1px solid hsl(var(--line));
       align-items: baseline;
     }
     .status-row:first-child { border-top: 0; padding-top: 0; }
-    .status-row span { color: hsl(var(--fg-dim)); font-size: 12px; }
+    .status-row span { color: hsl(var(--muted)); font-size: 12px; }
     .status-row strong { font-size: 12px; white-space: nowrap; }
 
     .sidebar-footer {
       margin-top: auto;
       display: grid;
-      gap: 12px;
-      padding-top: 10px;
-      border-top: 1px solid hsl(var(--border-subtle));
-      color: hsl(var(--fg-dim));
+      gap: 10px;
+      padding-top: 12px;
+      border-top: 1px solid hsl(var(--line));
+      color: hsl(var(--muted));
       font-size: 12px;
       line-height: 1.55;
     }
@@ -254,21 +240,18 @@
     .tiny {
       padding: 10px;
       border-radius: 14px;
-      border: 1px solid hsl(var(--border-default));
-      background: hsl(var(--bg-surface));
+      border: 1px solid hsl(var(--line));
+      background: hsla(225, 26%, 13%, .88);
+      color: hsl(var(--muted));
     }
     .tiny strong {
       display: block;
-      color: hsl(var(--fg-primary));
+      color: hsl(var(--text));
       font-size: 13px;
       margin-bottom: 3px;
     }
 
-    .content {
-      display: grid;
-      gap: 18px;
-      min-width: 0;
-    }
+    .content { display: grid; gap: 18px; min-width: 0; }
 
     .topbar {
       display: flex;
@@ -276,23 +259,24 @@
       justify-content: space-between;
       gap: 14px;
       padding: 14px 18px;
-      border: 1px solid hsl(var(--border-default));
       border-radius: var(--radius-xl);
-      background: rgba(255,255,255,.72);
-      backdrop-filter: blur(16px) saturate(140%);
-      box-shadow: var(--shadow);
+      border: 1px solid hsl(var(--line));
+      background: rgba(13, 15, 24, .66);
+      backdrop-filter: blur(16px) saturate(145%);
+      box-shadow: var(--shadow-soft);
+      flex-wrap: wrap;
     }
 
     .crumbs {
       display: flex;
-      flex-wrap: wrap;
       align-items: center;
       gap: 8px;
-      color: hsl(var(--fg-dim));
+      flex-wrap: wrap;
+      color: hsl(var(--muted));
       font-size: 12px;
     }
-    .crumbs .root { color: hsl(var(--fg-primary)); font-weight: 700; }
-    .crumbs .sep { color: hsl(var(--fg-dim)); }
+    .crumbs .root { color: hsl(var(--text)); font-weight: 700; }
+    .crumbs .sep { color: hsl(var(--muted-2)); }
 
     .top-actions {
       display: flex;
@@ -308,25 +292,35 @@
       gap: 8px;
       padding: 9px 12px;
       border-radius: 999px;
-      border: 1px solid hsl(var(--border-default));
-      background: rgba(255,255,255,.88);
-      color: hsl(var(--fg-secondary));
+      border: 1px solid hsl(var(--line));
+      background: hsla(225, 24%, 14%, .9);
+      color: hsl(var(--muted));
       font-size: 12px;
       white-space: nowrap;
     }
-    .pill strong { color: hsl(var(--fg-primary)); }
+    .pill strong { color: hsl(var(--text)); }
 
     .hero {
-      position: relative;
-      overflow: hidden;
-      border: 1px solid hsl(var(--border-default));
-      border-radius: 30px;
+      border: 1px solid hsl(var(--line));
+      border-radius: 32px;
       background:
-        radial-gradient(circle at 85% 18%, hsla(var(--accent-base), .10), transparent 25%),
-        radial-gradient(circle at 15% 12%, hsla(var(--status-ok), .10), transparent 25%),
-        linear-gradient(180deg, rgba(255,255,255,.94), rgba(255,255,255,.84));
+        radial-gradient(circle at 84% 16%, hsla(var(--accent), .16), transparent 25%),
+        radial-gradient(circle at 10% 16%, hsla(var(--accent-2), .12), transparent 22%),
+        radial-gradient(circle at 50% 100%, hsla(var(--accent-3), .08), transparent 18%),
+        linear-gradient(180deg, hsla(225, 23%, 14%, .96), hsla(225, 20%, 10%, .96));
       box-shadow: var(--shadow);
       padding: 22px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(130deg, rgba(255,255,255,.08), transparent 24%, transparent 75%, rgba(255,255,255,.04));
+      opacity: .6;
     }
 
     .hero-head {
@@ -336,6 +330,8 @@
       gap: 12px;
       flex-wrap: wrap;
       margin-bottom: 18px;
+      position: relative;
+      z-index: 1;
     }
 
     .status-chip {
@@ -344,40 +340,27 @@
       gap: 8px;
       padding: 9px 12px;
       border-radius: 999px;
-      border: 1px solid hsla(var(--status-ok), .18);
-      background: hsla(var(--status-ok), .08);
-      color: hsl(var(--status-ok));
+      border: 1px solid hsla(var(--good), .2);
+      background: hsla(var(--good), .08);
+      color: hsl(var(--good));
       font-size: 12px;
     }
-
-    .hero-copy {
-      display: grid;
-      gap: 14px;
-      max-width: 980px;
-    }
-
+    .hero-copy { display: grid; gap: 14px; max-width: 1050px; position: relative; z-index: 1; }
     .hero h2 {
       margin: 0;
-      font-size: clamp(36px, 4.8vw, 68px);
+      font-size: clamp(36px, 4.7vw, 66px);
       line-height: .95;
-      letter-spacing: -0.055em;
-      max-width: 11ch;
+      letter-spacing: -0.06em;
+      max-width: 12ch;
     }
-
     .hero p {
       margin: 0;
       font-size: 16px;
       line-height: 1.75;
-      color: hsl(var(--fg-secondary));
-      max-width: 68ch;
+      color: hsl(var(--muted));
+      max-width: 74ch;
     }
-
-    .actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 8px;
-    }
+    .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
     .btn {
       display: inline-flex;
       align-items: center;
@@ -385,9 +368,9 @@
       padding: 12px 14px;
       border-radius: 14px;
       text-decoration: none;
-      border: 1px solid hsl(var(--border-default));
-      color: hsl(var(--fg-primary));
-      background: rgba(255,255,255,.86);
+      border: 1px solid hsl(var(--line));
+      color: hsl(var(--text));
+      background: hsla(225, 24%, 14%, .88);
       box-shadow: var(--shadow-soft);
       transition: transform .15s ease, border-color .15s ease, background .15s ease;
       font-size: 13px;
@@ -395,12 +378,12 @@
     }
     .btn:hover {
       transform: translateY(-1px);
-      border-color: hsl(var(--border-strong));
-      background: rgba(255,255,255,.98);
+      border-color: hsl(var(--line-2));
+      background: hsla(225, 24%, 16%, .98);
     }
     .btn-primary {
-      border-color: hsla(var(--accent-base), .22);
-      background: linear-gradient(135deg, hsla(var(--accent-base), .16), hsla(var(--status-ok), .08));
+      border-color: hsla(var(--accent), .25);
+      background: linear-gradient(135deg, hsla(var(--accent), .16), hsla(var(--accent-2), .09));
     }
 
     .hero-metrics {
@@ -408,17 +391,19 @@
       grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 12px;
       margin-top: 20px;
+      position: relative;
+      z-index: 1;
     }
     .metric {
       padding: 16px;
       border-radius: 18px;
-      border: 1px solid hsl(var(--border-default));
-      background: rgba(255,255,255,.90);
+      border: 1px solid hsl(var(--line));
+      background: linear-gradient(180deg, hsla(225, 24%, 15%, .94), hsla(225, 21%, 11%, .94));
+      min-height: 122px;
       box-shadow: var(--shadow-soft);
-      min-height: 112px;
     }
     .metric .label {
-      color: hsl(var(--fg-dim));
+      color: hsl(var(--muted-2));
       font-size: 11px;
       letter-spacing: .18em;
       text-transform: uppercase;
@@ -426,41 +411,89 @@
       margin-bottom: 10px;
     }
     .metric .value {
-      font-size: clamp(22px, 3vw, 34px);
+      font-size: clamp(24px, 3.2vw, 36px);
       line-height: 1;
       font-weight: 800;
       letter-spacing: -0.05em;
     }
     .metric .foot {
       margin-top: 10px;
-      color: hsl(var(--fg-dim));
+      color: hsl(var(--muted));
       font-size: 13px;
       line-height: 1.45;
     }
 
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+    .section-head h3 {
+      margin: 0;
+      font-size: 16px;
+      letter-spacing: -0.03em;
+    }
+    .section-head p {
+      margin: 6px 0 0;
+      color: hsl(var(--muted));
+      font-size: 13px;
+      line-height: 1.55;
+      max-width: 70ch;
+    }
+
+    .toolbar {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .chip {
+      border: 1px solid hsl(var(--line));
+      background: hsla(225, 24%, 13%, .92);
+      color: hsl(var(--muted));
+      padding: 9px 12px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: background .15s ease, border-color .15s ease, transform .15s ease, color .15s ease;
+    }
+    .chip:hover { transform: translateY(-1px); color: hsl(var(--text)); border-color: hsl(var(--line-2)); }
+    .chip.active {
+      background: linear-gradient(135deg, hsla(var(--accent), .16), hsla(var(--accent-2), .10));
+      color: hsl(var(--text));
+      border-color: hsla(var(--accent), .22);
+    }
+
     .grid-2 {
       display: grid;
-      grid-template-columns: 1.1fr .9fr;
+      grid-template-columns: 1.08fr .92fr;
+      gap: 18px;
+      align-items: start;
+    }
+    .three-up {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 18px;
       align-items: start;
     }
 
     .card {
       overflow: hidden;
-      border: 1px solid hsl(var(--border-default));
+      border: 1px solid hsl(var(--line));
       border-radius: 28px;
-      background: rgba(255,255,255,.9);
+      background: linear-gradient(180deg, hsla(225, 23%, 14%, .96), hsla(225, 20%, 10%, .96));
       box-shadow: var(--shadow);
       position: relative;
     }
-
     .card::before {
       content: "";
       position: absolute;
       inset: 0;
       pointer-events: none;
-      background: linear-gradient(130deg, rgba(255,255,255,.16), transparent 25%, transparent 78%, rgba(255,255,255,.08));
-      opacity: .65;
+      background: linear-gradient(130deg, rgba(255,255,255,.07), transparent 24%, transparent 80%, rgba(255,255,255,.03));
+      opacity: .7;
     }
 
     .card-head {
@@ -469,191 +502,307 @@
       justify-content: space-between;
       gap: 12px;
       padding: 18px 18px 0;
+      position: relative;
+      z-index: 1;
     }
-
-    .card-head h3 {
+    .card-head h4 {
       margin: 0;
       font-size: 15px;
       letter-spacing: -0.03em;
     }
     .card-head p {
       margin: 6px 0 0;
-      color: hsl(var(--fg-dim));
+      color: hsl(var(--muted));
       font-size: 13px;
       line-height: 1.55;
     }
+    .card-body { padding: 18px; position: relative; z-index: 1; }
 
-    .card-body {
-      padding: 18px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .chart-shell {
-      border-radius: 22px;
-      border: 1px solid hsl(var(--border-subtle));
-      background:
-        radial-gradient(circle at 80% 18%, hsla(var(--accent-base), .08), transparent 24%),
-        radial-gradient(circle at 15% 12%, hsla(var(--status-ok), .08), transparent 22%),
-        linear-gradient(180deg, rgba(255,255,255,.96), rgba(255,255,255,.88));
-      overflow: hidden;
-      position: relative;
-      min-height: 260px;
-    }
-
-    .chart-grid {
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(to right, rgba(24, 29, 48, 0.05) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(24, 29, 48, 0.05) 1px, transparent 1px);
-      background-size: 10% 100%, 100% 20%;
-      opacity: .5;
-      pointer-events: none;
-    }
-
-    .chart-legend {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      flex-wrap: wrap;
-      margin-top: 12px;
-      color: hsl(var(--fg-dim));
-      font-size: 12px;
-    }
-
-    .legend-item {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-    }
-    .legend-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 999px;
-      display: inline-block;
-    }
-
-    .sidebar-list {
+    .stat-grid {
       display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 12px;
     }
-
-    .info-card {
+    .stat {
       padding: 16px;
       border-radius: 18px;
-      border: 1px solid hsl(var(--border-default));
-      background: linear-gradient(180deg, rgba(255,255,255,.96), rgba(255,255,255,.86));
-      box-shadow: var(--shadow-soft);
+      border: 1px solid hsl(var(--line));
+      background: linear-gradient(180deg, hsla(225, 24%, 15%, .92), hsla(225, 20%, 11%, .92));
+      min-height: 104px;
     }
-
-    .info-card .top {
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      align-items: baseline;
-    }
-
-    .info-card .k {
-      color: hsl(var(--fg-dim));
-      font-size: 11px;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      font-weight: 700;
-    }
-    .info-card .v {
-      font-size: 24px;
-      line-height: 1;
-      font-weight: 800;
-      letter-spacing: -0.05em;
-      margin-top: 10px;
-    }
-    .info-card .s {
-      margin-top: 10px;
-      color: hsl(var(--fg-secondary));
-      font-size: 13px;
-      line-height: 1.5;
-    }
-
-    .list-card {
-      padding: 18px;
-    }
-    .list-rows {
-      display: grid;
-      gap: 10px;
-      margin-top: 12px;
-    }
-    .row-item {
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      padding: 12px 0 0;
-      border-top: 1px solid hsl(var(--border-subtle));
-      align-items: flex-start;
-    }
-    .row-item:first-child { border-top: 0; padding-top: 0; }
-    .row-item strong { display: block; font-size: 13px; margin-bottom: 4px; }
-    .row-item span { display: block; color: hsl(var(--fg-dim)); font-size: 12px; line-height: 1.45; }
-
-    .tag {
-      padding: 7px 10px;
-      border-radius: 999px;
-      background: hsl(var(--bg-inset));
-      border: 1px solid hsl(var(--border-default));
-      color: hsl(var(--fg-primary));
-      font-size: 11px;
-      white-space: nowrap;
-    }
-
-    .three-up {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .mini-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
-      margin-top: 14px;
-    }
-
-    .mini {
-      padding: 14px;
-      border-radius: 18px;
-      border: 1px solid hsl(var(--border-default));
-      background: rgba(255,255,255,.90);
-      box-shadow: var(--shadow-soft);
-      min-height: 108px;
-    }
-    .mini .k {
-      color: hsl(var(--fg-dim));
+    .stat .k {
+      color: hsl(var(--muted-2));
       font-size: 11px;
       letter-spacing: .18em;
       text-transform: uppercase;
       font-weight: 700;
       margin-bottom: 10px;
     }
-    .mini .v {
-      font-size: 28px;
+    .stat .v {
+      font-size: clamp(22px, 3vw, 34px);
       line-height: 1;
       font-weight: 800;
       letter-spacing: -0.05em;
     }
-    .mini .s {
-      margin-top: 8px;
-      color: hsl(var(--fg-dim));
+    .stat .s {
+      margin-top: 10px;
+      color: hsl(var(--muted));
       font-size: 12px;
       line-height: 1.45;
+    }
+
+    .chart-shell {
+      border-radius: 22px;
+      border: 1px solid hsl(var(--line));
+      background:
+        radial-gradient(circle at 78% 18%, hsla(var(--accent), .12), transparent 24%),
+        radial-gradient(circle at 16% 18%, hsla(var(--accent-2), .10), transparent 22%),
+        linear-gradient(180deg, hsla(225, 24%, 15%, .96), hsla(225, 20%, 11%, .96));
+      overflow: hidden;
+      min-height: 290px;
+      position: relative;
+    }
+    .chart-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(to right, rgba(255,255,255,.06) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,.06) 1px, transparent 1px);
+      background-size: 10% 100%, 100% 20%;
+      opacity: .45;
+      pointer-events: none;
+    }
+    .chart-legend {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+      color: hsl(var(--muted));
+      font-size: 12px;
+    }
+    .legend-item { display: inline-flex; align-items: center; gap: 7px; }
+    .legend-dot { width: 10px; height: 10px; border-radius: 999px; display: inline-block; }
+
+    .list-card { display: grid; gap: 10px; }
+    .row-item {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: flex-start;
+      padding-top: 12px;
+      border-top: 1px solid hsl(var(--line));
+    }
+    .row-item:first-child { padding-top: 0; border-top: 0; }
+    .row-item strong { display: block; font-size: 13px; margin-bottom: 4px; }
+    .row-item span { display: block; color: hsl(var(--muted)); font-size: 12px; line-height: 1.5; }
+
+    .tag {
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: hsla(225, 23%, 16%, .95);
+      border: 1px solid hsl(var(--line));
+      color: hsl(var(--text));
+      font-size: 11px;
+      white-space: nowrap;
+    }
+
+    .inspect-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .inspect-card {
+      padding: 14px;
+      border-radius: 18px;
+      border: 1px solid hsl(var(--line));
+      background: linear-gradient(180deg, hsla(225, 24%, 15%, .95), hsla(225, 21%, 11%, .95));
+      min-height: 120px;
+      box-shadow: var(--shadow-soft);
+    }
+    .inspect-card .top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .inspect-card .k {
+      color: hsl(var(--muted-2));
+      font-size: 11px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+    .inspect-card .v {
+      font-size: 15px;
+      line-height: 1.3;
+      font-weight: 750;
+      letter-spacing: -0.03em;
+    }
+    .inspect-card .s {
+      color: hsl(var(--muted));
+      font-size: 12px;
+      line-height: 1.55;
+    }
+    .bar {
+      margin-top: 12px;
+      height: 8px;
+      border-radius: 999px;
+      background: hsla(225, 15%, 24%, .95);
+      overflow: hidden;
+      border: 1px solid hsl(var(--line));
+    }
+    .bar > span {
+      display: block;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, hsla(var(--accent), .9), hsla(var(--accent-2), .92));
+    }
+
+    .pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .small-pill {
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid hsl(var(--line));
+      background: hsla(225, 24%, 13%, .92);
+      color: hsl(var(--muted));
+      font-size: 11px;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 10px;
+    }
+    .event {
+      display: grid;
+      grid-template-columns: 16px minmax(0, 1fr);
+      gap: 12px;
+      align-items: start;
+      padding-top: 12px;
+      border-top: 1px solid hsl(var(--line));
+    }
+    .event:first-child { padding-top: 0; border-top: 0; }
+    .event .dot {
+      width: 12px;
+      height: 12px;
+      margin-top: 4px;
+      box-shadow: none;
+      background: linear-gradient(180deg, hsl(var(--accent)), hsl(var(--accent-2)));
+    }
+    .event strong { display: block; font-size: 13px; margin-bottom: 4px; }
+    .event span { display: block; color: hsl(var(--muted)); font-size: 12px; line-height: 1.5; }
+
+    .wizard {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .step {
+      padding: 14px;
+      border-radius: 18px;
+      border: 1px solid hsl(var(--line));
+      background: linear-gradient(180deg, hsla(225, 24%, 15%, .95), hsla(225, 21%, 11%, .95));
+      min-height: 170px;
+    }
+    .step .num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 11px;
+      background: linear-gradient(135deg, hsla(var(--accent), .18), hsla(var(--accent-2), .14));
+      border: 1px solid hsla(var(--accent), .20);
+      color: hsl(var(--text));
+      font-weight: 800;
+      font-size: 12px;
+      margin-bottom: 12px;
+    }
+    .step h5 { margin: 0 0 8px; font-size: 13px; }
+    .step p { margin: 0; color: hsl(var(--muted)); font-size: 12px; line-height: 1.55; }
+    .checklist {
+      display: grid;
+      gap: 8px;
+      margin-top: 12px;
+      color: hsl(var(--muted));
+      font-size: 12px;
+    }
+    .checklist div { display: flex; gap: 8px; align-items: flex-start; }
+    .checklist .tick { color: hsl(var(--good)); font-weight: 800; }
+
+    .dream-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .dream {
+      padding: 14px;
+      border-radius: 18px;
+      border: 1px solid hsl(var(--line));
+      background: linear-gradient(180deg, hsla(225, 24%, 15%, .95), hsla(225, 21%, 11%, .95));
+      min-height: 172px;
+      display: grid;
+      gap: 10px;
+      align-content: start;
+    }
+    .dream .top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+    .dream .title { font-size: 13px; font-weight: 750; letter-spacing: -0.02em; }
+    .dream .desc { color: hsl(var(--muted)); font-size: 12px; line-height: 1.5; }
+    .dream ul { margin: 0; padding-left: 16px; color: hsl(var(--muted)); font-size: 12px; line-height: 1.55; }
+
+    .knowledge-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 12px;
+    }
+    .connection-map {
+      display: grid;
+      gap: 12px;
+    }
+    .connection-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 0 0;
+      border-top: 1px solid hsl(var(--line));
+    }
+    .connection-row:first-child { padding-top: 0; border-top: 0; }
+    .connection-row strong { display: block; font-size: 13px; margin-bottom: 3px; }
+    .connection-row span { display: block; color: hsl(var(--muted)); font-size: 12px; line-height: 1.45; }
+
+    .source-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .source {
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid hsl(var(--line));
+      background: hsla(225, 24%, 13%, .92);
+      color: hsl(var(--muted));
+      font-size: 11px;
+    }
+    .source.on {
+      color: hsl(var(--text));
+      border-color: hsla(var(--good), .25);
+      background: hsla(var(--good), .09);
     }
 
     .sparkline {
       width: 100%;
       height: 72px;
       border-radius: 14px;
-      border: 1px solid hsl(var(--border-subtle));
+      border: 1px solid hsl(var(--line));
+      background: hsla(225, 24%, 12%, .92);
       overflow: hidden;
-      background: rgba(255,255,255,.7);
     }
 
     .bottom-bar {
@@ -661,17 +810,11 @@
       justify-content: space-between;
       gap: 16px;
       align-items: center;
-      color: hsl(var(--fg-dim));
+      color: hsl(var(--muted));
       font-size: 12px;
-      padding: 0 4px;
       font-family: var(--mono);
     }
-
-    .running-dots {
-      display: inline-flex;
-      gap: 4px;
-      align-items: center;
-    }
+    .running-dots { display: inline-flex; gap: 4px; align-items: center; }
     .running-dots span {
       display: inline-block;
       width: 4px;
@@ -682,35 +825,45 @@
     }
     .running-dots span:nth-child(2) { animation-delay: 140ms; }
     .running-dots span:nth-child(3) { animation-delay: 280ms; }
-
     @keyframes pulse {
       0%, 80%, 100% { opacity: .25; transform: scale(.85); }
       40% { opacity: 1; transform: scale(1); }
     }
 
-    @media (max-width: 1200px) {
-      .shell { grid-template-columns: 1fr; }
-      .sidebar {
-        position: static;
-        min-height: auto;
-      }
-      .three-up { grid-template-columns: 1fr; }
-      .grid-2 { grid-template-columns: 1fr; }
-      .hero-metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .footer-card {
+      border: 1px solid hsl(var(--line));
+      border-radius: 28px;
+      background: linear-gradient(180deg, hsla(225, 24%, 14%, .96), hsla(225, 20%, 10%, .96));
+      box-shadow: var(--shadow);
+      padding: 18px;
     }
 
-    @media (max-width: 760px) {
-      .app { width: min(100vw - 12px, 100vw - 12px); padding-top: 8px; }
-      .sidebar { border-radius: 22px; }
-      .topbar { flex-direction: column; align-items: flex-start; border-radius: 22px; }
-      .top-actions { justify-content: flex-start; }
-      .hero { border-radius: 24px; padding: 18px; }
-      .hero h2 { max-width: 100%; }
-      .hero-metrics { grid-template-columns: 1fr; }
-      .mini-grid { grid-template-columns: 1fr; }
-      .card { border-radius: 22px; }
+    .hide { display: none !important; }
+
+    @media (max-width: 1280px) {
+      .shell { grid-template-columns: 1fr; }
+      .sidebar { position: static; min-height: auto; }
+      .wizard { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .dream-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .knowledge-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 900px) {
+      .hero-metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .grid-2, .three-up, .stat-grid { grid-template-columns: 1fr; }
+      .inspect-grid { grid-template-columns: 1fr; }
+      .wizard { grid-template-columns: 1fr; }
+      .dream-grid { grid-template-columns: 1fr; }
       .bottom-bar { flex-direction: column; align-items: flex-start; gap: 8px; }
-      .tiny-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .app { width: min(100vw - 12px, 100vw - 12px); padding-top: 8px; }
+      .topbar { border-radius: 22px; padding: 12px 14px; }
+      .hero { border-radius: 24px; padding: 18px; }
+      .card { border-radius: 22px; }
+      .metric { min-height: 112px; }
+      .hero h2 { max-width: 100%; }
     }
   </style>
 </head>
@@ -721,20 +874,20 @@
         <div class="brand">
           <div class="orb" aria-hidden="true"></div>
           <div>
-            <h1>Hermes Agentic OS</h1>
-            <p>Premium console · one source of truth</p>
+            <h1>Hermes Visual Intelligence OS</h1>
+            <p>One place for models, memory, skills, costs, and self-improvement.</p>
           </div>
         </div>
 
         <div class="sidebar-section">
           <div class="section-label">Primary surfaces</div>
           <nav class="nav-links">
-            <a class="nav-link active" href="#today"><span class="nav-icon">◆</span> Today</a>
+            <a class="nav-link active" href="#overview"><span class="nav-icon">◆</span> Overview</a>
+            <a class="nav-link" href="#models"><span class="nav-icon">◌</span> Models</a>
+            <a class="nav-link" href="#memory"><span class="nav-icon">▣</span> Memory</a>
             <a class="nav-link" href="#skills"><span class="nav-icon">✦</span> Skills</a>
-            <a class="nav-link" href="#wiki"><span class="nav-icon">▣</span> Wiki</a>
-            <a class="nav-link" href="#journal"><span class="nav-icon">◌</span> Journal</a>
-            <a class="nav-link" href="#sources"><span class="nav-icon">⇪</span> Sources</a>
-            <a class="nav-link" href="#automations"><span class="nav-icon">⟳</span> Automations</a>
+            <a class="nav-link" href="#dreaming"><span class="nav-icon">⟡</span> Dream engine</a>
+            <a class="nav-link" href="#wizard"><span class="nav-icon">⟳</span> Onboarding</a>
             <a class="nav-link" href="#settings"><span class="nav-icon">◐</span> Settings</a>
           </nav>
         </div>
@@ -754,93 +907,112 @@
 
         <div class="sidebar-footer">
           <div class="tiny-grid">
-            <div class="tiny"><strong>28</strong>skills loaded</div>
-            <div class="tiny"><strong>14</strong>recent sessions</div>
+            <div class="tiny"><strong>8</strong>dream dimensions</div>
+            <div class="tiny"><strong>4</strong>memory sources</div>
             <div class="tiny"><strong>22</strong>cron jobs</div>
             <div class="tiny"><strong>99%</strong>signal health</div>
           </div>
-          <div>Built as a premium Agentic OS dashboard — calm, dense, and readable at a glance.</div>
+          <div>Built around the Jack-style operating-system thesis: everything visible, measurable, and improvable from one screen.</div>
         </div>
       </aside>
 
       <main class="content">
         <header class="topbar">
           <div class="crumbs">
-            <span class="root">Today</span>
+            <span class="root">Overview</span>
             <span class="sep">/</span>
-            <span>Overview</span>
+            <span>Visual intelligence</span>
             <span class="sep">/</span>
             <span>Agentic OS</span>
           </div>
           <div class="top-actions">
-            <div class="pill">local time <strong id="localTime">--:--:--</strong></div>
+            <div class="pill">local <strong id="localTime">--:--:--</strong></div>
             <div class="pill">utc <strong id="utcTime">--:--:--</strong></div>
-            <div class="pill">status <strong>healthy</strong></div>
+            <div class="pill">mode <strong>self-improving</strong></div>
           </div>
         </header>
 
-        <section id="today" class="hero">
+        <section id="overview" class="hero">
           <div class="hero-head">
-            <div class="status-chip"><span class="dot"></span> live overview · refreshed just now</div>
-            <div class="pill">one page · one place · one operating system</div>
+            <div class="status-chip"><span class="dot"></span> refreshed now · one OS for the whole stack</div>
+            <div class="pill">models · memory · skills · cost · roi · recommendations</div>
           </div>
 
           <div class="hero-copy">
-            <h2>Your whole agent stack, styled like a premium operating system.</h2>
+            <h2>Your AI operating system, built to see everything and improve itself.</h2>
             <p>
-              This version is built around the Agentic OS idea: one clean console for skills, sessions, memory,
-              cron, channels, and live health. No clutter. No “dashboard for dashboard’s sake.” Just signal.
+              This redesign is structured around the actual system in the transcript: connected models and plans,
+              memory sources, skills, cost intelligence, ROI, recent activity, and an always-on dream engine that
+              finds the next best improvement. It’s designed to be useful every day, not just impressive on first glance.
             </p>
             <div class="actions">
               <a class="btn btn-primary" href="https://github.com/ProLeadAppt/hermes-everything-dashboard" target="_blank" rel="noreferrer">Open repo</a>
               <a class="btn" href="https://hermes-everything-dashboard.vercel.app" target="_blank" rel="noreferrer">Open live app</a>
-              <a class="btn" href="#skills">Browse skills</a>
-              <a class="btn" href="#settings">Run health check</a>
+              <a class="btn" href="#wizard">Run onboarding</a>
+              <a class="btn" href="#dreaming">See recommendations</a>
             </div>
           </div>
 
           <div class="hero-metrics">
             <div class="metric">
-              <div class="label">skills loaded</div>
-              <div class="value">28</div>
-              <div class="foot">The C-suite packs, ready to launch whenever the job needs it.</div>
+              <div class="label">monthly ai spend</div>
+              <div class="value">$1,240</div>
+              <div class="foot">Tracks subscriptions plus API usage so the real burn is visible.</div>
             </div>
             <div class="metric">
-              <div class="label">recent sessions</div>
-              <div class="value">14</div>
-              <div class="foot">A quick view of the latest workstreams and handoffs.</div>
+              <div class="label">estimated time saved</div>
+              <div class="value">42h</div>
+              <div class="foot">Converted from repeated workflows, skills, and task automation.</div>
             </div>
             <div class="metric">
-              <div class="label">cron jobs</div>
-              <div class="value">22</div>
-              <div class="foot">Recurring jobs, watchers, and scheduled automations on deck.</div>
+              <div class="label">net roi</div>
+              <div class="value">4.8x</div>
+              <div class="foot">How much value the stack returns after cost is accounted for.</div>
             </div>
             <div class="metric">
-              <div class="label">signal health</div>
-              <div class="value">99%</div>
-              <div class="foot">Connected, stable, and ready to move on command.</div>
+              <div class="label">opportunity gaps</div>
+              <div class="value">12</div>
+              <div class="foot">The assistant found patterns worth turning into skills or automations.</div>
             </div>
           </div>
         </section>
 
         <section class="grid-2">
-          <article class="card">
+          <article class="card" id="models">
             <div class="card-head">
               <div>
-                <h3>Live activity</h3>
-                <p>A smooth trend line for recent agent attention and workflow load.</p>
+                <h4>Models & plans</h4>
+                <p>See what you’re using, what it costs, and where each model actually makes sense.</p>
               </div>
-              <span class="pill">history <strong>180m</strong></span>
+              <span class="pill">active <strong>4</strong></span>
             </div>
             <div class="card-body">
-              <div class="chart-shell">
-                <div class="chart-grid"></div>
-                <svg id="mainChart" viewBox="0 0 760 260" preserveAspectRatio="none" aria-label="Live activity chart"></svg>
+              <div class="stat-grid">
+                <div class="stat">
+                  <div class="k">Claude / premium</div>
+                  <div class="v">$20</div>
+                  <div class="s">Best for deep reasoning, ideation, and polished output.</div>
+                </div>
+                <div class="stat">
+                  <div class="k">Codex / code</div>
+                  <div class="v">API</div>
+                  <div class="s">Used for execution-heavy coding, reviews, and tool work.</div>
+                </div>
+                <div class="stat">
+                  <div class="k">Gemini / research</div>
+                  <div class="v">Cloud</div>
+                  <div class="s">Useful for broad synthesis, scan-and-summarise tasks, and vision.</div>
+                </div>
+                <div class="stat">
+                  <div class="k">OpenRouter / routing</div>
+                  <div class="v">Auto</div>
+                  <div class="s">Dynamic model selection based on task size and cost sensitivity.</div>
+                </div>
               </div>
               <div class="chart-legend">
-                <span class="legend-item"><i class="legend-dot" style="background: hsl(var(--accent-base));"></i>active work</span>
-                <span class="legend-item"><i class="legend-dot" style="background: hsl(var(--status-ok));"></i>gateway uptime</span>
-                <span class="legend-item"><i class="legend-dot" style="background: hsl(var(--status-warn));"></i>queue pressure</span>
+                <span class="legend-item"><i class="legend-dot" style="background:hsl(var(--accent));"></i>reasoning</span>
+                <span class="legend-item"><i class="legend-dot" style="background:hsl(var(--accent-2));"></i>code</span>
+                <span class="legend-item"><i class="legend-dot" style="background:hsl(var(--accent-3));"></i>research</span>
               </div>
             </div>
           </article>
@@ -848,174 +1020,351 @@
           <article class="card" id="settings">
             <div class="card-head">
               <div>
-                <h3>System health</h3>
-                <p>The surfaces you want green before you do anything else.</p>
+                <h4>Cost intelligence</h4>
+                <p>The system should always know where the money is going and what can be cheaper.</p>
               </div>
-              <span class="pill">status <strong>green</strong></span>
+              <span class="pill">alerts <strong>3</strong></span>
             </div>
-            <div class="card-body sidebar-list">
-              <div class="info-card">
-                <div class="top"><span class="k">gateway</span><span class="tag">connected</span></div>
-                <div class="v">Discord socket healthy</div>
-                <div class="s">Local transport, gateway, and live channel delivery are all in good shape.</div>
+            <div class="card-body list-card">
+              <div class="row-item">
+                <div><strong>Opus prices on simple work</strong><span>Suggest route to a cheaper model when the request is routine.</span></div>
+                <div class="tag">save $240</div>
               </div>
-              <div class="info-card">
-                <div class="top"><span class="k">memory</span><span class="tag">synced</span></div>
-                <div class="v">Persistent notes live</div>
-                <div class="s">Skills, preferences, and session context are available across runs.</div>
+              <div class="row-item">
+                <div><strong>Oversized context windows</strong><span>Trim stale context before long sessions create waste.</span></div>
+                <div class="tag">save 18%</div>
               </div>
-              <div class="info-card">
-                <div class="top"><span class="k">deploy</span><span class="tag">ready</span></div>
-                <div class="v">Vercel app live</div>
-                <div class="s">The dashboard is deployed and reachable for the next iteration.</div>
+              <div class="row-item">
+                <div><strong>Repeated research loops</strong><span>Promote recurring search patterns into reusable skills.</span></div>
+                <div class="tag">save 6h</div>
+              </div>
+              <div class="row-item">
+                <div><strong>Inactive subscriptions</strong><span>Surface plans that are still costing money but rarely used.</span></div>
+                <div class="tag">cancel</div>
               </div>
             </div>
           </article>
         </section>
 
-        <section class="three-up">
-          <article class="card" id="skills">
-            <div class="card-head">
-              <div>
-                <h3>Skills quick launch</h3>
-                <p>The packs you actually reach for without thinking.</p>
-              </div>
-              <span class="pill">packs <strong>7</strong></span>
-            </div>
-            <div class="card-body">
-              <div class="mini-grid">
-                <div class="mini"><div class="k">ceo</div><div class="v">7</div><div class="s">Standup, weekly review, decision brief.</div></div>
-                <div class="mini"><div class="k">cto</div><div class="v">11</div><div class="s">Code review, infra audit, smart commit.</div></div>
-                <div class="mini"><div class="k">cmo</div><div class="v">6</div><div class="s">Blog, newsletter, content cadence.</div></div>
-                <div class="mini"><div class="k">cfo</div><div class="v">7</div><div class="s">Runway, pricing, investor metrics.</div></div>
-              </div>
-            </div>
-          </article>
-
-          <article class="card" id="journal">
-            <div class="card-head">
-              <div>
-                <h3>Sessions & memory</h3>
-                <p>Recent work, remembered and summarised cleanly.</p>
-              </div>
-              <span class="pill">fresh <strong>now</strong></span>
-            </div>
-            <div class="card-body list-card">
-              <div class="list-rows">
-                <div class="row-item">
-                  <div>
-                    <strong>Dashboard upgraded to premium OS mode</strong>
-                    <span>Reworked the layout to feel like a serious control system, not a landing page.</span>
-                  </div>
-                  <div class="tag">design</div>
-                </div>
-                <div class="row-item">
-                  <div>
-                    <strong>GitHub repo created and pushed</strong>
-                    <span>The dashboard source now lives in a real repo with clean history.</span>
-                  </div>
-                  <div class="tag">repo</div>
-                </div>
-                <div class="row-item">
-                  <div>
-                    <strong>Vercel deployment updated</strong>
-                    <span>Live app stays reachable while the interface gets sharpened.</span>
-                  </div>
-                  <div class="tag">deploy</div>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <article class="card" id="sources">
-            <div class="card-head">
-              <div>
-                <h3>Channels & integrations</h3>
-                <p>The connected surfaces that keep the OS useful.</p>
-              </div>
-              <span class="pill">links <strong>4</strong></span>
-            </div>
-            <div class="card-body list-card">
-              <div class="list-rows">
-                <div class="row-item"><div><strong>GitHub</strong><span>Source repo on ProLeadAppt</span></div><div class="tag">connected</div></div>
-                <div class="row-item"><div><strong>Vercel</strong><span>Production app and aliases</span></div><div class="tag">live</div></div>
-                <div class="row-item"><div><strong>Discord</strong><span>Primary chat surface for the Hermes agent</span></div><div class="tag">online</div></div>
-                <div class="row-item"><div><strong>Local memory</strong><span>Preferences, skills, and session context</span></div><div class="tag">synced</div></div>
-              </div>
-            </div>
-          </article>
-        </section>
-
-        <section class="grid-2" id="automations">
+        <section class="three-up" id="memory">
           <article class="card">
             <div class="card-head">
               <div>
-                <h3>Automations</h3>
-                <p>Small, readable signals that tell you what’s actually running.</p>
+                <h4>Memory systems</h4>
+                <p>Local, vector, and document memory should be visible together.</p>
               </div>
-              <span class="pill">jobs <strong>22</strong></span>
+              <span class="pill">sources <strong>4</strong></span>
             </div>
-            <div class="card-body">
-              <div class="mini-grid">
-                <div class="mini">
-                  <div class="k">today</div>
-                  <div class="v">6</div>
-                  <div class="s">Active jobs waiting for their next tick.</div>
-                </div>
-                <div class="mini">
-                  <div class="k">queued</div>
-                  <div class="v">3</div>
-                  <div class="s">Jobs staged and ready to fire when due.</div>
-                </div>
-                <div class="mini">
-                  <div class="k">latency</div>
-                  <div class="v">0.8s</div>
-                  <div class="s">Fast handoff from trigger to action.</div>
-                </div>
-                <div class="mini">
-                  <div class="k">uptime</div>
-                  <div class="v">99%</div>
-                  <div class="s">The operating layer is steady enough to trust.</div>
-                </div>
+            <div class="card-body connection-map">
+              <div class="connection-row">
+                <div><strong>Local memory</strong><span>Fast, personal, session-aware context.</span></div>
+                <span class="tag">hot</span>
+              </div>
+              <div class="connection-row">
+                <div><strong>Obsidian vault</strong><span>Notes, plans, references, and durable knowledge.</span></div>
+                <span class="tag">synced</span>
+              </div>
+              <div class="connection-row">
+                <div><strong>Pinecone / vector</strong><span>Semantic recall and search across larger memory.</span></div>
+                <span class="tag">indexed</span>
+              </div>
+              <div class="connection-row">
+                <div><strong>Supabase / structured</strong><span>Facts, objects, and app state with explicit schema.</span></div>
+                <span class="tag">healthy</span>
               </div>
             </div>
           </article>
 
-          <article class="card" id="wiki">
+          <article class="card" id="skills">
             <div class="card-head">
               <div>
-                <h3>Vault pulse</h3>
-                <p>A small sparkline for the knowledge base and session trail.</p>
+                <h4>Skills that actually pay back</h4>
+                <p>Promote repeated work into skills and kill the stale ones.</p>
               </div>
-              <span class="pill">total <strong>1,218</strong></span>
+              <span class="pill">top <strong>5</strong></span>
+            </div>
+            <div class="card-body list-card">
+              <div class="row-item">
+                <div><strong>Design systems</strong><span>Template reuse, quick UI synthesis, visual consistency.</span></div>
+                <div class="tag">ROI 9.4x</div>
+              </div>
+              <div class="row-item">
+                <div><strong>Research briefs</strong><span>Convert repeated scanning into a single reusable workflow.</span></div>
+                <div class="tag">ROI 7.8x</div>
+              </div>
+              <div class="row-item">
+                <div><strong>Content operations</strong><span>Scripts, outlines, uploads, and publishing cadence.</span></div>
+                <div class="tag">ROI 6.1x</div>
+              </div>
+              <div class="row-item">
+                <div><strong>Ops automation</strong><span>Cron jobs, health checks, and recurring maintenance.</span></div>
+                <div class="tag">ROI 8.6x</div>
+              </div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-head">
+              <div>
+                <h4>Connected systems</h4>
+                <p>Everything the dashboard can reason over should be visible here.</p>
+              </div>
+              <span class="pill">live <strong>6</strong></span>
             </div>
             <div class="card-body">
-              <svg id="sparkA" class="sparkline" viewBox="0 0 360 72" preserveAspectRatio="none" aria-label="Vault sparkline"></svg>
-              <div style="height: 10px"></div>
-              <svg id="sparkB" class="sparkline" viewBox="0 0 360 72" preserveAspectRatio="none" aria-label="Jobs sparkline"></svg>
-              <div style="height: 10px"></div>
-              <svg id="sparkC" class="sparkline" viewBox="0 0 360 72" preserveAspectRatio="none" aria-label="Sessions sparkline"></svg>
+              <div class="pill-list">
+                <span class="small-pill">Claude</span>
+                <span class="small-pill">Codex</span>
+                <span class="small-pill">Gemini</span>
+                <span class="small-pill">OpenRouter</span>
+                <span class="small-pill">Obsidian</span>
+                <span class="small-pill">Supabase</span>
+                <span class="small-pill">Pinecone</span>
+                <span class="small-pill">GitHub</span>
+                <span class="small-pill">Vercel</span>
+                <span class="small-pill">Discord</span>
+              </div>
+              <div style="height: 14px"></div>
+              <svg id="sparkConnections" class="sparkline" viewBox="0 0 360 72" preserveAspectRatio="none" aria-label="Connections trend"></svg>
               <div class="bottom-bar" style="margin-top: 12px;">
-                <span>One clean overview for the stuff that moves your work.</span>
-                <span class="running-dots" aria-hidden="true"><span></span><span></span><span></span></span>
+                <span>visualised dependency map for the stack</span>
+                <span class="running-dots"><span></span><span></span><span></span></span>
               </div>
             </div>
           </article>
         </section>
 
-        <section class="card" id="today" style="padding-bottom: 8px;">
+        <section class="card" id="dreaming">
           <div class="card-head">
             <div>
-              <h3>Today’s operating brief</h3>
-              <p>The current snapshot, written like a calm control-room summary.</p>
+              <h4>Self-improving dream engine</h4>
+              <p>This is the signature feature from the transcript: the dashboard should detect patterns and recommend the next moves automatically.</p>
+            </div>
+            <span class="pill">8 dimensions <strong>active</strong></span>
+          </div>
+          <div class="card-body">
+            <div class="toolbar" aria-label="filter by focus">
+              <button class="chip active" data-filter="all" aria-pressed="true">All</button>
+              <button class="chip" data-filter="money" aria-pressed="false">Money</button>
+              <button class="chip" data-filter="memory" aria-pressed="false">Memory</button>
+              <button class="chip" data-filter="skills" aria-pressed="false">Skills</button>
+              <button class="chip" data-filter="workflow" aria-pressed="false">Workflow</button>
+              <button class="chip" data-filter="growth" aria-pressed="false">Growth</button>
+            </div>
+            <div style="height: 14px"></div>
+            <div class="dream-grid">
+              <div class="dream inspect-card" data-domain="memory workflow">
+                <div class="top"><div class="title">Conversation analysis</div><span class="tag">signal</span></div>
+                <div class="desc">Reads recent messages, clusters intent, and spots repeat work that should become a skill.</div>
+                <ul><li>Detect manual repeats</li><li>Recommend a skill</li><li>Surface missed context</li></ul>
+              </div>
+              <div class="dream inspect-card" data-domain="money">
+                <div class="top"><div class="title">Cost intelligence</div><span class="tag">money</span></div>
+                <div class="desc">Looks for oversized context, premium models on simple jobs, and subscriptions that aren’t paying their way.</div>
+                <ul><li>Route cheaper models</li><li>Trim context</li><li>Flag wasted spend</li></ul>
+              </div>
+              <div class="dream inspect-card" data-domain="skills">
+                <div class="top"><div class="title">Skill performance</div><span class="tag">skill</span></div>
+                <div class="desc">Tracks last use dates and highlights skills that are stale, weak, or underused.</div>
+                <ul><li>Find dead skills</li><li>Show top ROI</li><li>Promote useful patterns</li></ul>
+              </div>
+              <div class="dream inspect-card" data-domain="memory">
+                <div class="top"><div class="title">Memory health</div><span class="tag">memory</span></div>
+                <div class="desc">Finds outdated memory, duplicates, and places where the system should remember better.</div>
+                <ul><li>Spot stale notes</li><li>Reveal gaps</li><li>Suggest refactors</li></ul>
+              </div>
+              <div class="dream inspect-card" data-domain="workflow">
+                <div class="top"><div class="title">Session hygiene</div><span class="tag">flow</span></div>
+                <div class="desc">Looks for bloated sessions, scattered context, and opportunities to break work into cleaner units.</div>
+                <ul><li>Shorten sessions</li><li>Group tasks</li><li>Reduce churn</li></ul>
+              </div>
+              <div class="dream inspect-card" data-domain="growth">
+                <div class="top"><div class="title">Workflow patterns</div><span class="tag">growth</span></div>
+                <div class="desc">Turns recurring sequences into automations so the stack becomes easier to operate over time.</div>
+                <ul><li>Promote cron jobs</li><li>Suggest automations</li><li>Remove manual steps</li></ul>
+              </div>
+              <div class="dream inspect-card" data-domain="growth memory">
+                <div class="top"><div class="title">External opportunities</div><span class="tag">discover</span></div>
+                <div class="desc">Finds new skills, docs, design systems, or references that would unlock higher leverage.</div>
+                <ul><li>Search useful repos</li><li>Spot missing tools</li><li>Recommend references</li></ul>
+              </div>
+              <div class="dream inspect-card" data-domain="money growth">
+                <div class="top"><div class="title">Business outcomes</div><span class="tag">roi</span></div>
+                <div class="desc">Connects the work to time saved, money saved, and money made for clients.</div>
+                <ul><li>Estimate client ROI</li><li>Track value created</li><li>Prioritise leverage</li></ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="grid-2" id="wizard">
+          <article class="card">
+            <div class="card-head">
+              <div>
+                <h4>Onboarding wizard</h4>
+                <p>This is the practical setup flow: detect models, memory, value, and the dream cadence.</p>
+              </div>
+              <span class="pill">setup <strong>5 steps</strong></span>
+            </div>
+            <div class="card-body">
+              <div class="wizard">
+                <div class="step">
+                  <div class="num">1</div>
+                  <h5>Models & plans</h5>
+                  <p>Auto-detect Claude, Codex, Gemini, OpenRouter, and whatever else is connected.</p>
+                  <div class="checklist">
+                    <div><span class="tick">✓</span><span>Show current model coverage</span></div>
+                    <div><span class="tick">✓</span><span>Map plans to usage</span></div>
+                  </div>
+                </div>
+                <div class="step">
+                  <div class="num">2</div>
+                  <h5>Memory locations</h5>
+                  <p>Choose where local memory lives: Obsidian, vector DBs, or structured systems.</p>
+                  <div class="checklist">
+                    <div><span class="tick">✓</span><span>Local vault</span></div>
+                    <div><span class="tick">✓</span><span>Semantic index</span></div>
+                  </div>
+                </div>
+                <div class="step">
+                  <div class="num">3</div>
+                  <h5>Skills & knowledge</h5>
+                  <p>Identify the skills you already have and expose gaps that are worth formalising.</p>
+                  <div class="checklist">
+                    <div><span class="tick">✓</span><span>Track skill usage</span></div>
+                    <div><span class="tick">✓</span><span>Recommend new skills</span></div>
+                  </div>
+                </div>
+                <div class="step">
+                  <div class="num">4</div>
+                  <h5>Time value & ROI</h5>
+                  <p>Define what your time is worth so the dashboard can measure actual savings.</p>
+                  <div class="checklist">
+                    <div><span class="tick">✓</span><span>ROI calculator</span></div>
+                    <div><span class="tick">✓</span><span>Client value tracking</span></div>
+                  </div>
+                </div>
+                <div class="step">
+                  <div class="num">5</div>
+                  <h5>Dream cadence</h5>
+                  <p>Set morning and evening analysis so the system keeps improving while you’re offline.</p>
+                  <div class="checklist">
+                    <div><span class="tick">✓</span><span>Daily refresh</span></div>
+                    <div><span class="tick">✓</span><span>Recommendations</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-head">
+              <div>
+                <h4>Recent activity</h4>
+                <p>What the intelligence system noticed recently.</p>
+              </div>
+              <span class="pill">today <strong>11 items</strong></span>
+            </div>
+            <div class="card-body timeline">
+              <div class="event"><div class="dot"></div><div><strong>Video scripts memory is behind the work</strong><span>Recommend a memory refresh so the system stops using stale context.</span></div></div>
+              <div class="event"><div class="dot"></div><div><strong>Opus pricing on routine tasks</strong><span>Flagged for cheaper routing because the task doesn’t need the expensive model.</span></div></div>
+              <div class="event"><div class="dot"></div><div><strong>Repeated competitive research detected</strong><span>The same workflow happened multiple times this week and should become a skill.</span></div></div>
+              <div class="event"><div class="dot"></div><div><strong>Three disconnected pockets of intelligence</strong><span>Dashboard should bring them together into a single overview.</span></div></div>
+              <div class="event"><div class="dot"></div><div><strong>Client ROI view requested</strong><span>Show saved time, value created, and what the system is earning back.</span></div></div>
+            </div>
+          </article>
+        </section>
+
+        <section class="grid-2" id="settings">
+          <article class="card">
+            <div class="card-head">
+              <div>
+                <h4>Knowledge system</h4>
+                <p>Connect everything the OS should reason over and keep it visible at a glance.</p>
+              </div>
+              <span class="pill">enabled <strong>4/6</strong></span>
+            </div>
+            <div class="card-body knowledge-grid">
+              <div class="connection-map">
+                <div class="connection-row">
+                  <div><strong>Obsidian vault</strong><span>Personal notes, reference systems, and planning memory.</span></div>
+                  <span class="tag">on</span>
+                </div>
+                <div class="connection-row">
+                  <div><strong>Pinecone / vector</strong><span>Semantic search across old sessions and linked knowledge.</span></div>
+                  <span class="tag">on</span>
+                </div>
+                <div class="connection-row">
+                  <div><strong>Supabase</strong><span>Structured facts, app state, and durable records.</span></div>
+                  <span class="tag">on</span>
+                </div>
+                <div class="connection-row">
+                  <div><strong>Local files</strong><span>Repo files, scripts, outputs, and working artifacts.</span></div>
+                  <span class="tag">on</span>
+                </div>
+                <div class="connection-row">
+                  <div><strong>External search</strong><span>Research, reference hunting, and opportunity discovery.</span></div>
+                  <span class="tag">off</span>
+                </div>
+              </div>
+              <div>
+                <div class="section-label" style="padding-left:0; margin-bottom:10px;">Connected surfaces</div>
+                <div class="source-list">
+                  <span class="source on">models</span>
+                  <span class="source on">memory</span>
+                  <span class="source on">skills</span>
+                  <span class="source on">usage</span>
+                  <span class="source on">sessions</span>
+                  <span class="source on">roi</span>
+                  <span class="source on">subscriptions</span>
+                  <span class="source on">automations</span>
+                  <span class="source">social</span>
+                  <span class="source">search</span>
+                </div>
+                <div style="height: 14px"></div>
+                <svg id="sparkUsage" class="sparkline" viewBox="0 0 360 72" preserveAspectRatio="none" aria-label="Usage trend"></svg>
+                <div class="chart-legend" style="margin-top:12px;">
+                  <span class="legend-item"><i class="legend-dot" style="background:hsl(var(--accent));"></i>usage</span>
+                  <span class="legend-item"><i class="legend-dot" style="background:hsl(var(--accent-2));"></i>health</span>
+                  <span class="legend-item"><i class="legend-dot" style="background:hsl(var(--accent-3));"></i>gaps</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-head">
+              <div>
+                <h4>Live activity chart</h4>
+                <p>A clear trend line for usage, cost pressure, and overall system momentum.</p>
+              </div>
+              <span class="pill">window <strong>30d</strong></span>
+            </div>
+            <div class="card-body">
+              <div class="chart-shell">
+                <div class="chart-grid"></div>
+                <svg id="mainChart" viewBox="0 0 760 290" preserveAspectRatio="none" aria-label="Live usage chart"></svg>
+              </div>
+              <div class="chart-legend">
+                <span class="legend-item"><i class="legend-dot" style="background:hsl(var(--accent));"></i>usage</span>
+                <span class="legend-item"><i class="legend-dot" style="background:hsl(var(--accent-2));"></i>roi</span>
+                <span class="legend-item"><i class="legend-dot" style="background:hsl(var(--accent-3));"></i>opportunities</span>
+              </div>
+            </div>
+          </article>
+        </section>
+
+        <section class="card" id="footer">
+          <div class="card-head">
+            <div>
+              <h4>Today’s operating brief</h4>
+              <p>A calm, everyday summary of the whole system — useful at a glance, not noisy.</p>
             </div>
             <span class="pill">updated <strong id="updated">just now</strong></span>
           </div>
-          <div class="card-body">
-            <div class="bottom-bar">
-              <span>Everything is visible in one place: current state, live data, and the next obvious move.</span>
-              <span>premium agentic OS · Hermes</span>
-            </div>
+          <div class="card-body bottom-bar">
+            <span>Everything flows together: models, memory, skills, usage, ROI, and the next recommendation.</span>
+            <span>Hermes Agentic OS · visual intelligence layer</span>
           </div>
         </section>
       </main>
@@ -1024,10 +1373,8 @@
 
   <script>
     const data = {
-      main: [18, 22, 20, 24, 26, 25, 29, 31, 28, 33, 35, 37, 36, 40, 43, 41, 45, 48, 46, 50, 54, 52, 56, 60, 58, 61, 65, 63, 67, 70, 68, 72],
-      sparkA: [6, 7, 9, 8, 10, 11, 13, 12, 14, 15, 16, 18, 17, 19],
-      sparkB: [10, 12, 11, 13, 15, 14, 17, 19, 18, 21, 23, 24, 26, 27],
-      sparkC: [90, 91, 92, 92, 93, 94, 95, 95, 96, 97, 98, 98, 99, 100],
+      main: [18, 21, 20, 24, 28, 27, 30, 34, 32, 37, 39, 42, 40, 45, 48, 46, 50, 54, 52, 58, 61, 59, 63, 67, 66, 69, 72, 70, 74, 77],
+      usage: [8, 9, 10, 9, 11, 13, 14, 15, 15, 16, 18, 17, 19, 21],
     };
 
     function path(values, width, height, pad = 12) {
@@ -1044,10 +1391,10 @@
       }).map((p, i) => `${i ? 'L' : 'M'} ${p[0].toFixed(1)} ${p[1].toFixed(1)}`).join(' ');
     }
 
-    function drawChart(svgId, values, stroke) {
+    function drawChart(svgId, values, stroke, height) {
       const svg = document.getElementById(svgId);
       const w = svg.viewBox.baseVal.width || 760;
-      const h = svg.viewBox.baseVal.height || 260;
+      const h = height || svg.viewBox.baseVal.height || 290;
       const d = path(values, w, h, 14);
       const area = `${d} L ${w - 14} ${h - 14} L 14 ${h - 14} Z`;
       svg.innerHTML = `
@@ -1068,14 +1415,12 @@
 
     function drawSpark(svgId, values, stroke) {
       const svg = document.getElementById(svgId);
-      const w = 360;
-      const h = 72;
-      const d = path(values, w, h, 10);
-      const area = `${d} L ${w - 10} ${h - 10} L 10 ${h - 10} Z`;
+      const d = path(values, 360, 72, 10);
+      const area = `${d} L 350 62 L 10 62 Z`;
       svg.innerHTML = `
         <defs>
           <linearGradient id="grad-${svgId}" x1="0" x2="1" y1="0" y2="1">
-            <stop offset="0%" stop-color="${stroke}" stop-opacity="0.25" />
+            <stop offset="0%" stop-color="${stroke}" stop-opacity="0.26" />
             <stop offset="100%" stop-color="${stroke}" stop-opacity="0.02" />
           </linearGradient>
         </defs>
@@ -1096,12 +1441,29 @@
       document.getElementById('updated').textContent = 'just now';
     }
 
-    drawChart('mainChart', data.main, 'hsl(252 78% 58%)');
-    drawSpark('sparkA', data.sparkA, 'hsl(252 78% 58%)');
-    drawSpark('sparkB', data.sparkB, 'hsl(152 60% 38%)');
-    drawSpark('sparkC', data.sparkC, 'hsl(34 80% 48%)');
+    drawChart('mainChart', data.main, 'hsl(255 83% 65%)', 290);
+    drawSpark('sparkUsage', data.usage, 'hsl(182 75% 52%)');
     tick();
     setInterval(tick, 1000);
+
+    const chips = document.querySelectorAll('.chip');
+    const cards = document.querySelectorAll('.inspect-card');
+    chips.forEach((chip) => {
+      chip.addEventListener('click', () => {
+        chips.forEach((c) => {
+          c.classList.remove('active');
+          c.setAttribute('aria-pressed', 'false');
+        });
+        chip.classList.add('active');
+        chip.setAttribute('aria-pressed', 'true');
+        const filter = chip.dataset.filter;
+        cards.forEach((card) => {
+          const domain = card.dataset.domain || '';
+          const show = filter === 'all' || domain.includes(filter);
+          card.classList.toggle('hide', !show);
+        });
+      });
+    });
   </script>
 </body>
 </html>
